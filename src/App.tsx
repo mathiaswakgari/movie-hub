@@ -1,6 +1,9 @@
 import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
+import { useState } from "react";
 function App() {
+  const [searchTerm, setSearchTerm] = useState("Hello");
+
   return (
     <Grid
       templateAreas={{
@@ -15,7 +18,11 @@ function App() {
       }}
     >
       <GridItem area={"navbar"}>
-        <NavBar />
+        <NavBar
+          onSearch={(searchTerm) => {
+            setSearchTerm(searchTerm);
+          }}
+        />
       </GridItem>
       <GridItem area={"main"} bgColor={"black"}>
         Main
