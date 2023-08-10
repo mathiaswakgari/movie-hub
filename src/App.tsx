@@ -1,4 +1,5 @@
 import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import NavBar from "./components/NavBar";
 function App() {
   return (
     <Grid
@@ -14,7 +15,7 @@ function App() {
       }}
     >
       <GridItem area={"navbar"} bgColor={"red"}>
-        NavBar
+        <NavBar />
       </GridItem>
       <GridItem area={"main"} bgColor={"black"}>
         Main
