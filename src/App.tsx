@@ -14,7 +14,7 @@ function App() {
         lg: "300px 1fr",
       }}
     >
-      <GridItem area={"navbar"} bgColor={"red"}>
+      <GridItem area={"navbar"}>
         <NavBar />
       </GridItem>
       <GridItem area={"main"} bgColor={"black"}>
