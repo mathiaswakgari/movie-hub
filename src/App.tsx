@@ -3,8 +3,12 @@ import NavBar from "./components/NavBar";
 import { useState, useEffect } from "react";
 import Movies from "./components/Movies";
 
+export interface MovieQuery {
+  searchTerm: string;
+}
+
 function App() {
-  const [searchTerm, setSearchTerm] = useState("Hello");
+  const [movieQuery, setMovieQuery] = useState<MovieQuery>({} as MovieQuery);
 
   return (
     <Grid
@@ -22,7 +26,7 @@ function App() {
       <GridItem area={"navbar"}>
         <NavBar
           onSearch={(searchTerm) => {
-            setSearchTerm(searchTerm);
+            setMovieQuery({ ...movieQuery, searchTerm });
           }}
         />
       </GridItem>
