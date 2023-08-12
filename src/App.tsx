@@ -26,7 +26,12 @@ function App() {
           }}
         />
       </GridItem>
-      <GridItem area={"main"}>
+      <GridItem
+        area={"main"}
+        display={"flex"}
+        flexDirection={"column"}
+        alignItems={"center"}
+      >
         <Movies />
       </GridItem>
       <Show above="lg">
