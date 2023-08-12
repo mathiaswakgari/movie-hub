@@ -1,11 +1,10 @@
 import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import { useState, useEffect } from "react";
-import useMovies from "./hooks/useMovies";
+import Movies from "./components/Movies";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("Hello");
-  useMovies().movies;
 
   return (
     <Grid
@@ -27,8 +26,8 @@ function App() {
           }}
         />
       </GridItem>
-      <GridItem area={"main"} bgColor={"black"}>
-        Main
+      <GridItem area={"main"}>
+        <Movies />
       </GridItem>
       <Show above="lg">
         <GridItem area={"sidebar"} bgColor={"blue"}>
