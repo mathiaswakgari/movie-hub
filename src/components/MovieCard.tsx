@@ -1,4 +1,12 @@
-import { Box, Card, CardBody, Heading, Image, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Card,
+  CardBody,
+  Heading,
+  Image,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import { Movie } from "../hooks/useMovies";
 import "./movieCard.css";
 
@@ -16,6 +24,11 @@ const MovieCard = ({ movie }: Props) => {
             fontSize={"4xl"}
             fontWeight={"extrabold"}
           >{`${movie.rating}/10`}</Text>
+          <VStack>
+            {movie.genres.map((genre) => (
+              <Text fontSize={"2xl"}>{genre}</Text>
+            ))}
+          </VStack>
         </Box>
       </Box>
 

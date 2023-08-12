@@ -17,6 +17,7 @@ export interface Movie {
   rating: number;
   runtime: number;
   summary: string;
+  genres: Array<string>;
   background_image: string;
   small_cover_image: string;
   large_cover_image: string;
