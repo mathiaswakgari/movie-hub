@@ -36,7 +36,7 @@ function App() {
         flexDirection={"column"}
         alignItems={"center"}
       >
-        <Movies />
+        <Movies movieQuery={movieQuery} />
       </GridItem>
       <Show above="lg">
         <GridItem area={"sidebar"} bgColor={"blue"}>

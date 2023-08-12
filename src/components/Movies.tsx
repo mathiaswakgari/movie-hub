@@ -1,9 +1,14 @@
 import { SimpleGrid } from "@chakra-ui/react";
 import useMovies from "../hooks/useMovies";
 import MovieCard from "./MovieCard";
+import { MovieQuery } from "../App";
 
-const Movies = () => {
-  const { movies, setMovies } = useMovies();
+interface Props {
+  movieQuery: MovieQuery;
+}
+
+const Movies = ({ movieQuery }: Props) => {
+  const { movies, setMovies } = useMovies(movieQuery);
 
   return (
     <SimpleGrid

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import apiClinet from "../services/api-clinet";
+import { MovieQuery } from "../App";
 
 interface FetchMovies {
   data: {
@@ -23,18 +24,25 @@ export interface Movie {
   large_cover_image: string;
 }
 
-const useMovies = () => {
+const useMovies = (movieQuery: MovieQuery) => {
   const [movies, setMovies] = useState<Array<Movie>>([]);
 
   useEffect(() => {
     const controller = new AbortController();
 
-    apiClinet.get<FetchMovies>("list_movies.json").then((res) => {
-      setMovies(res.data.data.movies);
-    });
+    apiClinet
+      .get<FetchMovies>("list_movies.json", {
+        signal: controller.signal,
+        params: {
+          query_term: movieQuery.searchTerm,
+        },
+      })
+      .then((res) => {
+        setMovies(res.data.data.movies);
+      });
 
     return () => controller.abort();
-  }, []);
+  }, [movieQuery.searchTerm]);
   return {
     movies,
     setMovies,
