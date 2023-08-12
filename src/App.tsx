@@ -1,8 +1,11 @@
 import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import useMovies from "./hooks/useMovies";
+
 function App() {
   const [searchTerm, setSearchTerm] = useState("Hello");
+  useMovies().movies;
 
   return (
     <Grid
