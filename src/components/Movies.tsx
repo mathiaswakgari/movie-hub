@@ -1,4 +1,5 @@
 import useMovies from "../hooks/useMovies";
+import MovieCard from "./MovieCard";
 
 const Movies = () => {
   const { movies, setMovies } = useMovies();
@@ -6,7 +7,7 @@ const Movies = () => {
   return (
     <ul>
       {movies.map((movie) => (
-        <li>{movie.id}</li>
+        <MovieCard movie={movie} />
       ))}
     </ul>
   );
