@@ -8,7 +8,7 @@ interface Props {
 const MovieCard = ({ movie }: Props) => {
   return (
     <Card>
-      <Image src={movie.background_image} />
+      <Image src={movie.large_cover_image} />
       <CardBody>
         <Heading fontSize={"2xl"} whiteSpace={"nowrap"}>
           {movie.title}
