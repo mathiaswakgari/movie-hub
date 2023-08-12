@@ -35,6 +35,7 @@ const useMovies = (movieQuery: MovieQuery) => {
         signal: controller.signal,
         params: {
           query_term: movieQuery.searchTerm,
+          genre: movieQuery.selectedGenre,
         },
       })
       .then((res) => {
@@ -42,7 +43,7 @@ const useMovies = (movieQuery: MovieQuery) => {
       });
 
     return () => controller.abort();
-  }, [movieQuery.searchTerm]);
+  }, [movieQuery.searchTerm, movieQuery.selectedGenre]);
   return {
     movies,
     setMovies,

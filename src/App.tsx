@@ -1,10 +1,12 @@
 import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Movies from "./components/Movies";
+import SideBar from "./components/SideBar";
 
 export interface MovieQuery {
   searchTerm: string;
+  selectedGenre: string;
 }
 
 function App() {
@@ -39,8 +41,12 @@ function App() {
         <Movies movieQuery={movieQuery} />
       </GridItem>
       <Show above="lg">
-        <GridItem area={"sidebar"} bgColor={"blue"}>
-          SideBar
+        <GridItem area={"sidebar"} bgColor={"gray"}>
+          <SideBar
+            onSelectGenre={(selectedGenre) => {
+              setMovieQuery({ ...movieQuery, selectedGenre });
+            }}
+          />
         </GridItem>
       </Show>
     </Grid>
