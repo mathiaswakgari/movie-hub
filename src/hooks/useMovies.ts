@@ -8,6 +8,11 @@ export interface FetchMovies {
     movies: Array<Movie>;
   };
 }
+export interface Cast {
+  name: string;
+  character_name: string;
+  url_small_image: string;
+}
 export interface Movie {
   id: number;
   url: string;
@@ -28,6 +33,8 @@ export interface Movie {
   large_screenshot_image2: string;
   medium_screenshot_image1: string;
   medium_screenshot_image2: string;
+  description_full: string;
+  cast: Array<Cast>;
 }
 
 const useMovies = (movieQuery: MovieQuery) => {

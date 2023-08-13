@@ -6,6 +6,7 @@ import MovieCardNoHover from "./MovieCardNoHover";
 import useSuggestedMovies from "../hooks/useSuggestedMovies";
 import SuggestedMovieCard from "./SuggestedMovieCard";
 import ReactPlayer from "react-player";
+import CastCard from "./CastCard";
 // import { Movie } from "../hooks/useMovies";
 
 const Movie = () => {
@@ -97,6 +98,24 @@ const Movie = () => {
           </Box>
           <Image src={movie?.medium_screenshot_image1} />
           <Image src={movie?.medium_screenshot_image2} />
+        </HStack>
+      </Box>
+      <Box>
+        <HStack justifyContent={"space-between"}>
+          <Box maxW={"60%"}>
+            <Heading>Description</Heading>
+            <Text paddingY={5} fontWeight={"light"}>
+              {movie?.description_full}
+            </Text>
+          </Box>
+          <Box alignSelf={"flex-start"}>
+            <Heading>Top Cast</Heading>
+            <Box paddingY={5}>
+              {movie?.cast.map((c) => (
+                <CastCard cast={c} />
+              ))}
+            </Box>
+          </Box>
         </HStack>
       </Box>
     </Box>
