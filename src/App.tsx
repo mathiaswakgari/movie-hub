@@ -37,34 +37,32 @@ function App() {
             }}
           />
         </GridItem>
-        <Box>
-          <GridItem
-            area={"main"}
-            display={"flex"}
-            flexDirection={"column"}
-            alignItems={"center"}
-          >
-            <Routes>
-              <Route path="/" element={<Movies movieQuery={movieQuery} />} />
-              <Route path="/movies/:id" element={<Movie />} />
-            </Routes>
+        <GridItem
+          area={"main"}
+          display={"flex"}
+          flexDirection={"column"}
+          alignItems={"center"}
+        >
+          <Routes>
+            <Route path="/" element={<Movies movieQuery={movieQuery} />} />
+            <Route path="/movies/:id" element={<Movie />} />
+          </Routes>
+        </GridItem>
+        <Show above="lg">
+          <GridItem area={"sidebar"} bgColor={"gray"}>
+            <SideBar
+              onRatingChange={(selectedRating) => {
+                setMovieQuery({ ...movieQuery, selectedRating });
+              }}
+              onSelectGenre={(selectedGenre) => {
+                setMovieQuery({ ...movieQuery, selectedGenre });
+              }}
+              onOrderChange={(selectedOrder) => {
+                setMovieQuery({ ...movieQuery, selectedOrder });
+              }}
+            />
           </GridItem>
-          <Show above="lg">
-            <GridItem area={"sidebar"} bgColor={"gray"}>
-              <SideBar
-                onRatingChange={(selectedRating) => {
-                  setMovieQuery({ ...movieQuery, selectedRating });
-                }}
-                onSelectGenre={(selectedGenre) => {
-                  setMovieQuery({ ...movieQuery, selectedGenre });
-                }}
-                onOrderChange={(selectedOrder) => {
-                  setMovieQuery({ ...movieQuery, selectedOrder });
-                }}
-              />
-            </GridItem>
-          </Show>
-        </Box>
+        </Show>
       </Grid>
     </BrowserRouter>
   );

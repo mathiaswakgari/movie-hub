@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import apiClinet from "../services/api-clinet";
 import { MovieQuery } from "../App";
 
-interface FetchMovies {
+export interface FetchMovies {
   data: {
     movie_count: number;
     movies: Array<Movie>;
@@ -14,7 +14,7 @@ export interface Movie {
   imdb_code: string;
   title: string;
   slug: string;
-  release_year: number;
+  year: number;
   rating: number;
   runtime: number;
   summary: string;
@@ -22,6 +22,7 @@ export interface Movie {
   background_image: string;
   small_cover_image: string;
   large_cover_image: string;
+  medium_cover_image: string;
 }
 
 const useMovies = (movieQuery: MovieQuery) => {
