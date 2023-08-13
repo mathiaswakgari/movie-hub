@@ -18,7 +18,9 @@ const MovieCardNoHover = ({ url }: Props) => {
     <Card
       width={{
         sm: "150px",
-        md: "300px",
+        md: "200px",
+        lg: "250px",
+        xl: "300px",
       }}
       border={"4px white solid"}
     >

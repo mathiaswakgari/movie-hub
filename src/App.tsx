@@ -2,7 +2,7 @@ import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import { useState } from "react";
 import Movies from "./components/Movies";
-import SideBar from "./components/SideBar";
+import "./components/NavBar.css";
 import { Router, BrowserRouter, Routes, Route } from "react-router-dom";
 import Movie from "./components/Movie";
 
@@ -22,18 +22,28 @@ function App() {
         templateAreas={{
           base: `"navbar"
               "main"`,
-          lg: `"navbar navbar"
-            "sidebar main"`,
+          lg: `"navbar"
+            "main"`,
         }}
+        className="smooth"
         templateColumns={{
           base: "1fr",
-          lg: "300px 1fr",
+          lg: "1fr",
         }}
       >
         <GridItem area={"navbar"}>
           <NavBar
             onSearch={(searchTerm) => {
               setMovieQuery({ ...movieQuery, searchTerm });
+            }}
+            onOrderChange={(selectedOrder) => {
+              setMovieQuery({ ...movieQuery, selectedOrder });
+            }}
+            onRatingChange={(selectedRating) => {
+              setMovieQuery({ ...movieQuery, selectedRating });
+            }}
+            onSelectGenre={(selectedGenre) => {
+              setMovieQuery({ ...movieQuery, selectedGenre });
             }}
           />
         </GridItem>
@@ -48,7 +58,7 @@ function App() {
             <Route path="/movies/:id" element={<Movie />} />
           </Routes>
         </GridItem>
-        <Show above="lg">
+        {/* <Show above="lg">
           <GridItem area={"sidebar"} bgColor={"gray"}>
             <SideBar
               onRatingChange={(selectedRating) => {
@@ -62,7 +72,7 @@ function App() {
               }}
             />
           </GridItem>
-        </Show>
+        </Show> */}
       </Grid>
     </BrowserRouter>
   );

@@ -1,6 +1,14 @@
 import { Link, useParams } from "react-router-dom";
 import useMovie from "../hooks/useMovie";
-import { Box, HStack, Heading, Text, VStack, Image } from "@chakra-ui/react";
+import {
+  Box,
+  HStack,
+  Heading,
+  Text,
+  VStack,
+  Image,
+  SimpleGrid,
+} from "@chakra-ui/react";
 import { LiaImdb } from "react-icons/lia";
 import MovieCardNoHover from "./MovieCardNoHover";
 import useSuggestedMovies from "../hooks/useSuggestedMovies";
@@ -21,7 +29,6 @@ const Movie = () => {
       bgImage={movie?.background_image}
       backgroundSize={"cover"}
       minH={"100vh"}
-      minW={"100%"}
       paddingX={"100px"}
       paddingY={"100px"}
     >
@@ -32,11 +39,11 @@ const Movie = () => {
         justifyContent={"center"}
         gap={{
           sm: "10",
-          md: '"20"',
+          md: "20",
         }}
         flexDirection={{
           sm: "column",
-          md: "row",
+          lg: "row",
         }}
       >
         <Box>
@@ -76,15 +83,23 @@ const Movie = () => {
             </Box>
           </VStack>
         </Box>
-        <Box maxW={"300px"} color={"white"}>
+        <Box maxW={"300px"} maxH={"500px"} color={"white"}>
           <Text>Similar Movies</Text>
-          <HStack flexWrap={"wrap"}>
+          <SimpleGrid
+            columns={{
+              sm: 1,
+              md: 2,
+              lg: 2,
+              xl: 2,
+            }}
+            spacing={2}
+          >
             {suggestedMovies.map((movie) => (
               <Link to={`/movies/${movie.id}`}>
                 <SuggestedMovieCard key={movie.id} movie={movie} />
               </Link>
             ))}
-          </HStack>
+          </SimpleGrid>
         </Box>
       </HStack>
       <Box paddingY={10}>
