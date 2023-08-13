@@ -1,16 +1,20 @@
 import { useParams } from "react-router-dom";
 import useMovie from "../hooks/useMovie";
-import { Box, HStack, Heading, Text, VStack } from "@chakra-ui/react";
+import { Box, HStack, Heading, Text, VStack, Image } from "@chakra-ui/react";
 import { LiaImdb } from "react-icons/lia";
 import MovieCardNoHover from "./MovieCardNoHover";
 import useSuggestedMovies from "../hooks/useSuggestedMovies";
 import SuggestedMovieCard from "./SuggestedMovieCard";
+import ReactPlayer from "react-player";
 // import { Movie } from "../hooks/useMovies";
 
 const Movie = () => {
   const { id } = useParams();
-  const { movie } = useMovie(id!);
+  const { movie, isLoading } = useMovie(id!);
   const { suggestedMovies } = useSuggestedMovies(id!);
+
+  if (isLoading) return null;
+
   return (
     <Box
       bgImage={movie?.background_image}
@@ -35,7 +39,7 @@ const Movie = () => {
         }}
       >
         <Box>
-          <MovieCardNoHover movie={movie!} />
+          <MovieCardNoHover url={movie?.large_cover_image!} />
         </Box>
         <Box color={"white"} maxW={"600px"}>
           <VStack alignItems={"flex-start"}>
@@ -80,6 +84,21 @@ const Movie = () => {
           </HStack>
         </Box>
       </HStack>
+      <Box paddingY={10}>
+        <Text textAlign={"center"}>Previews</Text>
+        <HStack overflowX={"scroll"} justifyContent={"center"}>
+          <Box>
+            <ReactPlayer
+              url={`https://www.youtube.com/watch?v=${movie?.yt_trailer_code}`}
+              controls
+              height={"147px"}
+              width={"350px"}
+            />
+          </Box>
+          <Image src={movie?.medium_screenshot_image1} />
+          <Image src={movie?.medium_screenshot_image2} />
+        </HStack>
+      </Box>
     </Box>
   );
 };

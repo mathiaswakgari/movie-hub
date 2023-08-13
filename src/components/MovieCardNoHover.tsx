@@ -10,10 +10,10 @@ import {
 import { Movie } from "../hooks/useMovies";
 
 interface Props {
-  movie: Movie;
+  url: string;
 }
 
-const MovieCardNoHover = ({ movie }: Props) => {
+const MovieCardNoHover = ({ url }: Props) => {
   return (
     <Card
       width={{
@@ -22,7 +22,7 @@ const MovieCardNoHover = ({ movie }: Props) => {
       }}
       border={"4px white solid"}
     >
-      <Image src={movie.large_cover_image} className="image" />
+      <Image src={url} className="image" />
     </Card>
   );
 };

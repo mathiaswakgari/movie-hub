@@ -23,6 +23,11 @@ export interface Movie {
   small_cover_image: string;
   large_cover_image: string;
   medium_cover_image: string;
+  yt_trailer_code: string;
+  large_screenshot_image1: string;
+  large_screenshot_image2: string;
+  medium_screenshot_image1: string;
+  medium_screenshot_image2: string;
 }
 
 const useMovies = (movieQuery: MovieQuery) => {
