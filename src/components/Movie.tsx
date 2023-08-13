@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useMovie from "../hooks/useMovie";
 import { Box, HStack, Heading, Text, VStack, Image } from "@chakra-ui/react";
 import { LiaImdb } from "react-icons/lia";
@@ -80,7 +80,9 @@ const Movie = () => {
           <Text>Similar Movies</Text>
           <HStack flexWrap={"wrap"}>
             {suggestedMovies.map((movie) => (
-              <SuggestedMovieCard movie={movie} />
+              <Link to={`/movies/${movie.id}`}>
+                <SuggestedMovieCard key={movie.id} movie={movie} />
+              </Link>
             ))}
           </HStack>
         </Box>
