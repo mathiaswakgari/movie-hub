@@ -7,6 +7,7 @@ import SideBar from "./components/SideBar";
 export interface MovieQuery {
   searchTerm: string;
   selectedGenre: string;
+  selectedRating: number;
 }
 
 function App() {
@@ -43,6 +44,9 @@ function App() {
       <Show above="lg">
         <GridItem area={"sidebar"} bgColor={"gray"}>
           <SideBar
+            onRatingChange={(selectedRating) => {
+              setMovieQuery({ ...movieQuery, selectedRating });
+            }}
             onSelectGenre={(selectedGenre) => {
               setMovieQuery({ ...movieQuery, selectedGenre });
             }}

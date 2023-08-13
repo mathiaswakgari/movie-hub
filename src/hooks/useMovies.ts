@@ -36,6 +36,7 @@ const useMovies = (movieQuery: MovieQuery) => {
         params: {
           query_term: movieQuery.searchTerm,
           genre: movieQuery.selectedGenre,
+          minimum_rating: movieQuery.selectedRating,
         },
       })
       .then((res) => {
@@ -43,7 +44,7 @@ const useMovies = (movieQuery: MovieQuery) => {
       });
 
     return () => controller.abort();
-  }, [movieQuery.searchTerm, movieQuery.selectedGenre]);
+  }, [movieQuery]);
   return {
     movies,
     setMovies,

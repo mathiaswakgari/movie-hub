@@ -1,6 +1,4 @@
 import { HStack, Select, Text } from "@chakra-ui/react";
-
-import { MovieQuery } from "../App";
 import { genres } from "../data/Genres";
 interface Props {
   onGenreChange: (genre: string) => void;
