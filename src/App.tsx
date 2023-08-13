@@ -8,6 +8,7 @@ export interface MovieQuery {
   searchTerm: string;
   selectedGenre: string;
   selectedRating: number;
+  selectedOrder: string;
 }
 
 function App() {
@@ -49,6 +50,9 @@ function App() {
             }}
             onSelectGenre={(selectedGenre) => {
               setMovieQuery({ ...movieQuery, selectedGenre });
+            }}
+            onOrderChange={(selectedOrder) => {
+              setMovieQuery({ ...movieQuery, selectedOrder });
             }}
           />
         </GridItem>

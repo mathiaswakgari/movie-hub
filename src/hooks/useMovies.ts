@@ -37,6 +37,7 @@ const useMovies = (movieQuery: MovieQuery) => {
           query_term: movieQuery.searchTerm,
           genre: movieQuery.selectedGenre,
           minimum_rating: movieQuery.selectedRating,
+          sort_by: movieQuery.selectedOrder,
         },
       })
       .then((res) => {
