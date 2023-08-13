@@ -2,6 +2,7 @@ import { SimpleGrid } from "@chakra-ui/react";
 import useMovies from "../hooks/useMovies";
 import MovieCard from "./MovieCard";
 import { MovieQuery } from "../App";
+import { Link } from "react-router-dom";
 
 interface Props {
   movieQuery: MovieQuery;
@@ -21,7 +22,9 @@ const Movies = ({ movieQuery }: Props) => {
       spacing={"10"}
     >
       {movies.map((movie) => (
-        <MovieCard key={movie.id} movie={movie} />
+        <Link to={`/movies/${movie.id}`}>
+          <MovieCard key={movie.id} movie={movie} />
+        </Link>
       ))}
     </SimpleGrid>
   );

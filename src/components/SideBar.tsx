@@ -1,4 +1,3 @@
-import { MovieQuery } from "../App";
 import { Box, HStack, Heading, VStack, Text } from "@chakra-ui/react";
 import GenreSelector from "./GenreSelector";
 import RatingSelector, { Rating } from "./RatingSelector";
