@@ -3,7 +3,7 @@ import NavBar from "./components/NavBar";
 import { useState } from "react";
 import Movies from "./components/Movies";
 import "./components/NavBar.css";
-import { Router, BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Movie from "./components/Movie";
 
 export interface MovieQuery {
@@ -25,7 +25,6 @@ function App() {
           lg: `"navbar"
             "main"`,
         }}
-        className="smooth"
         templateColumns={{
           base: "1fr",
           lg: "1fr",
@@ -58,21 +57,6 @@ function App() {
             <Route path="/movies/:id" element={<Movie />} />
           </Routes>
         </GridItem>
-        {/* <Show above="lg">
-          <GridItem area={"sidebar"} bgColor={"gray"}>
-            <SideBar
-              onRatingChange={(selectedRating) => {
-                setMovieQuery({ ...movieQuery, selectedRating });
-              }}
-              onSelectGenre={(selectedGenre) => {
-                setMovieQuery({ ...movieQuery, selectedGenre });
-              }}
-              onOrderChange={(selectedOrder) => {
-                setMovieQuery({ ...movieQuery, selectedOrder });
-              }}
-            />
-          </GridItem>
-        </Show> */}
       </Grid>
     </BrowserRouter>
   );

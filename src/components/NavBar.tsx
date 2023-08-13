@@ -7,6 +7,7 @@ import { useState } from "react";
 import { BsArrowUpCircle } from "react-icons/bs";
 import SideBar from "./SideBar";
 import "./NavBar.css";
+import { Link } from "react-router-dom";
 
 interface Props {
   onSearch: (searchTerm: string) => void;
@@ -25,10 +26,28 @@ const NavBar = ({
   return (
     <Box>
       <HStack justifyContent={"space-between"} padding={"2px 10px"}>
-        <Box display={"flex"} flexDirection={"row"} alignItems={"center"}>
-          <Image src={logo} boxSize={"70px"} />
-          <Text fontSize={"3xl"}>Cinéma</Text>
-        </Box>
+        <Link to={"/"}>
+          <Box display={"flex"} flexDirection={"row"} alignItems={"center"}>
+            <Image
+              src={logo}
+              boxSize={{
+                sm: "20px",
+                md: "30px",
+              }}
+              marginRight={2}
+            />
+            <Text
+              fontSize={{
+                sm: "lg",
+                md: "2xl",
+                lg: "3xl",
+              }}
+            >
+              Cinéma
+            </Text>
+          </Box>
+        </Link>
+
         <SearchBar onSearch={onSearch} />
         <ColorModeButton />
       </HStack>
@@ -52,7 +71,6 @@ const NavBar = ({
             width={"100%"}
             flexDirection={"column"}
             alignItems={"center"}
-            className="smooth"
           >
             <SideBar
               onOrderChange={onOrderChange}
