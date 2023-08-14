@@ -31,9 +31,8 @@ const MovieCard = ({ movie }: Props) => {
           </VStack>
         </Box>
       </Box>
-
       <CardBody>
-        <Heading fontSize={"2xl"} textOverflow={"ellipsis"}>
+        <Heading noOfLines={1} fontSize={"2xl"}>
           {movie.title}
         </Heading>
       </CardBody>
