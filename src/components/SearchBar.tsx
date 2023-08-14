@@ -1,4 +1,4 @@
-import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import { Box, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
@@ -11,20 +11,28 @@ const SearchBar = ({ onSearch }: Props) => {
   const formRef = useRef<HTMLFormElement>(null);
   const navigate = useNavigate();
   return (
-    <form
-      ref={formRef}
-      onSubmit={(e) => {
-        e.preventDefault();
-        if (ref.current) onSearch(ref.current.value);
-        navigate("/");
-        formRef.current?.reset();
+    <Box
+      width={{
+        sm: "170px",
+        md: "300px",
+        lg: "450px",
       }}
     >
-      <InputGroup>
-        <InputLeftElement children={<AiOutlineSearch />} />
-        <Input ref={ref} type="text" placeholder="Search here..." />
-      </InputGroup>
-    </form>
+      <form
+        ref={formRef}
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (ref.current) onSearch(ref.current.value);
+          navigate("/");
+          formRef.current?.reset();
+        }}
+      >
+        <InputGroup>
+          <InputLeftElement children={<AiOutlineSearch />} />
+          <Input ref={ref} type="text" placeholder="Search here..." />
+        </InputGroup>
+      </form>
+    </Box>
   );
 };
 
