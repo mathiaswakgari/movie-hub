@@ -1,4 +1,4 @@
-import { SimpleGrid } from "@chakra-ui/react";
+import { Box, Heading, SimpleGrid, Text } from "@chakra-ui/react";
 import useMovies from "../hooks/useMovies";
 import MovieCard from "./MovieCard";
 import { MovieQuery } from "../App";
@@ -12,6 +12,20 @@ interface Props {
 const Movies = ({ movieQuery }: Props) => {
   const { movies, isLoading } = useMovies(movieQuery);
   const skeletonMovies = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+  if (!movies)
+    return (
+      <Box
+        w={"100vw"}
+        height={"100vh"}
+        display={"flex"}
+        justifyContent={"center"}
+        alignContent={"center"}
+        alignItems={"center"}
+      >
+        <Heading>Oops.... try again.</Heading>
+      </Box>
+    );
 
   return (
     <SimpleGrid

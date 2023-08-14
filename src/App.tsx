@@ -41,15 +41,7 @@ function App() {
           lg: "1fr",
         }}
       >
-        <GridItem
-          area={"navbar"}
-          position={"fixed"}
-          width={"100%"}
-          zIndex={3}
-          paddingBottom={0}
-          className="smooth"
-          bg={"chakra-body-bg"}
-        >
+        <GridItem area={"navbar"}>
           <NavBar
             onSearch={(searchTerm) => {
               setMovieQuery({ ...movieQuery, searchTerm });

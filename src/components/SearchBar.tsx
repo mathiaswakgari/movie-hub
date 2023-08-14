@@ -29,7 +29,12 @@ const SearchBar = ({ onSearch }: Props) => {
       >
         <InputGroup>
           <InputLeftElement children={<AiOutlineSearch />} />
-          <Input ref={ref} type="text" placeholder="Search here..." />
+          <Input
+            ref={ref}
+            type="text"
+            placeholder="Search here..."
+            onChange={() => onSearch(ref.current?.value!)}
+          />
         </InputGroup>
       </form>
     </Box>
