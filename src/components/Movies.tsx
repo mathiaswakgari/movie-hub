@@ -23,6 +23,7 @@ const Movies = ({ movieQuery }: Props) => {
       }}
       spacing={"10"}
       paddingBottom={"50px"}
+      marginTop={"200px"}
     >
       {isLoading
         ? skeletonMovies.map((movie) => <MovieCardSkeleton key={movie} />)

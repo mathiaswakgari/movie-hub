@@ -35,6 +35,7 @@ const MovieCard = ({ movie }: Props) => {
         <Heading noOfLines={1} fontSize={"2xl"}>
           {movie.title}
         </Heading>
+        <Text>{movie.year}</Text>
       </CardBody>
     </Card>
   );

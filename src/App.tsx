@@ -40,7 +40,7 @@ function App() {
           position={"fixed"}
           width={"100%"}
           zIndex={3}
-          paddingBottom={1}
+          paddingBottom={0}
           className="smooth"
           bg={"chakra-body-bg"}
         >
@@ -61,7 +61,7 @@ function App() {
         </GridItem>
         <GridItem
           area={"main"}
-          marginTop={"100"}
+          marginTop={"0"}
           display={"flex"}
           flexDirection={"column"}
           alignItems={"center"}

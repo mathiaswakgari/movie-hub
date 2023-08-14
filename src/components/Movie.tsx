@@ -41,10 +41,11 @@ const Movie = () => {
   return (
     <Box height={"100%"} width={"100%"} paddingX={"00px"} paddingY={"000px"}>
       <Box
-        height={"100vh"}
+        minHeight={"100vh"}
         bgImage={movie?.background_image}
         backgroundSize={"cover"}
         paddingTop={"100px"}
+        paddingX={"20px"}
       >
         <HStack
           justifyContent={"center"}
@@ -129,30 +130,47 @@ const Movie = () => {
           </HStack>
         </Box>
       </Box>
-
-      <Box bg={"chakra-body-bg"} color={"chakra-body-text"}>
-        <HStack
-          justifyContent={"space-between"}
-          paddingX={"30px"}
-          paddingTop={"10px"}
+      <Box>
+        <Box
+          bg={"chakra-body-bg"}
+          color={"chakra-body-text"}
+          display={"flex"}
+          justifyContent={"center"}
         >
-          <Box maxW={"60%"}>
-            <Heading>Description</Heading>
-            <Text paddingY={5} fontWeight={"light"}>
-              {movie?.description_full
-                ? movie?.description_full
-                : "No Description"}
-            </Text>
-          </Box>
-          <Box alignSelf={"flex-start"}>
-            <Heading>Top Cast</Heading>
-            <Box paddingY={5}>
-              {movie?.cast
-                ? movie?.cast.map((c) => <CastCard cast={c} />)
-                : "No cast"}
+          <HStack
+            justifyContent={"space-evenly"}
+            paddingX={"10px"}
+            paddingTop={"10px"}
+            flexDirection={{
+              sm: "column",
+              md: "row",
+            }}
+          >
+            <Box
+              maxW={{
+                sm: "80%",
+                md: "50%",
+                lg: "60%",
+              }}
+              alignSelf={"flex-start"}
+            >
+              <Heading>Description</Heading>
+              <Text paddingY={5} fontWeight={"light"}>
+                {movie?.description_full
+                  ? movie?.description_full
+                  : "No Description"}
+              </Text>
             </Box>
-          </Box>
-        </HStack>
+            <Box alignSelf={"flex-start"}>
+              <Heading>Top Cast</Heading>
+              <Box paddingY={5}>
+                {movie?.cast
+                  ? movie?.cast.map((c) => <CastCard cast={c} />)
+                  : "No cast"}
+              </Box>
+            </Box>
+          </HStack>
+        </Box>
       </Box>
     </Box>
   );
