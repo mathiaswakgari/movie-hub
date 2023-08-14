@@ -8,6 +8,7 @@ import {
   VStack,
   Image,
   SimpleGrid,
+  Spinner,
 } from "@chakra-ui/react";
 import { LiaImdb } from "react-icons/lia";
 import MovieCardNoHover from "./MovieCardNoHover";
@@ -22,7 +23,20 @@ const Movie = () => {
   const { movie, isLoading } = useMovie(id!);
   const { suggestedMovies } = useSuggestedMovies(id!);
 
-  if (isLoading) return null;
+  if (!isLoading)
+    return (
+      <Box w={"100%"} h={"100vh"}>
+        <HStack
+          justifyContent={"center"}
+          alignContent={"center"}
+          alignItems={"center"}
+          h={"100%"}
+        >
+          <Spinner />
+          <Text>Loading...</Text>
+        </HStack>
+      </Box>
+    );
 
   return (
     <Box

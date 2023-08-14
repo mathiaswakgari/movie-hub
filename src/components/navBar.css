@@ -1,5 +1,5 @@
 .smooth {
-  animation: fadeIn 1.2s ease-in-out;
+  animation: fadeIn 0.2s ease-in-out;
   transition: height 1s linear;
 }
 @keyframes fadeIn {
