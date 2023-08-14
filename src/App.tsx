@@ -5,6 +5,7 @@ import Movies from "./components/Movies";
 import "./components/NavBar.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Movie from "./components/Movie";
+import Footer from "./components/Footer";
 
 export interface MovieQuery {
   searchTerm: string;
@@ -21,9 +22,13 @@ function App() {
       <Grid
         templateAreas={{
           base: `"navbar"
-              "main"`,
+              "main"
+              "footer"
+              `,
           lg: `"navbar"
-            "main"`,
+            "main"
+            "footer"
+            `,
         }}
         templateColumns={{
           base: "1fr",
@@ -65,6 +70,9 @@ function App() {
             <Route path="/" element={<Movies movieQuery={movieQuery} />} />
             <Route path="/movies/:id" element={<Movie />} />
           </Routes>
+        </GridItem>
+        <GridItem area={"footer"}>
+          <Footer />
         </GridItem>
       </Grid>
     </BrowserRouter>
