@@ -21,7 +21,14 @@ const SideBar = ({ onSelectGenre, onRatingChange, onOrderChange }: Props) => {
       >
         Browse Movies
       </Text>
-      <HStack gap={10} paddingY={2}>
+      <HStack
+        gap={10}
+        paddingY={2}
+        flexDirection={{
+          sm: "column",
+          md: "row",
+        }}
+      >
         <GenreSelector onGenreChange={onSelectGenre} />
         <RatingSelector onRatingChange={onRatingChange} />
         <OrderSelector onOrderChange={onOrderChange} />
