@@ -34,10 +34,9 @@ function App() {
           area={"navbar"}
           position={"fixed"}
           width={"100%"}
-          bg={"gray.900"}
           zIndex={3}
           paddingBottom={1}
-          borderBottom={"0 solid grey"}
+          className="smooth"
         >
           <NavBar
             onSearch={(searchTerm) => {
@@ -56,7 +55,7 @@ function App() {
         </GridItem>
         <GridItem
           area={"main"}
-          marginY={"100"}
+          marginTop={"100"}
           display={"flex"}
           flexDirection={"column"}
           alignItems={"center"}

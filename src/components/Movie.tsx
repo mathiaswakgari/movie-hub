@@ -28,7 +28,8 @@ const Movie = () => {
     <Box
       bgImage={movie?.background_image}
       backgroundSize={"cover"}
-      minH={"100vh"}
+      height={"100%"}
+      width={"100%"}
       paddingX={"100px"}
       paddingY={"100px"}
     >
