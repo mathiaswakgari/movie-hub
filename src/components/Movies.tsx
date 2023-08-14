@@ -3,13 +3,15 @@ import useMovies from "../hooks/useMovies";
 import MovieCard from "./MovieCard";
 import { MovieQuery } from "../App";
 import { Link } from "react-router-dom";
+import MovieCardSkeleton from "./MovieCardSkeleton";
 
 interface Props {
   movieQuery: MovieQuery;
 }
 
 const Movies = ({ movieQuery }: Props) => {
-  const { movies, setMovies } = useMovies(movieQuery);
+  const { movies, setMovies, isLoading } = useMovies(movieQuery);
+  const skeletonMovies = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   return (
     <SimpleGrid
@@ -21,11 +23,13 @@ const Movies = ({ movieQuery }: Props) => {
       }}
       spacing={"10"}
     >
-      {movies.map((movie) => (
-        <Link to={`/movies/${movie.id}`}>
-          <MovieCard key={movie.id} movie={movie} />
-        </Link>
-      ))}
+      {isLoading
+        ? skeletonMovies.map((movie) => <MovieCardSkeleton key={movie} />)
+        : movies.map((movie) => (
+            <Link to={`/movies/${movie.id}`}>
+              <MovieCard key={movie.id} movie={movie} />
+            </Link>
+          ))}
     </SimpleGrid>
   );
 };
