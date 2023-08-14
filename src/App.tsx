@@ -37,6 +37,7 @@ function App() {
           zIndex={3}
           paddingBottom={1}
           className="smooth"
+          bg={"gray.800"}
         >
           <NavBar
             onSearch={(searchTerm) => {

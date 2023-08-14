@@ -28,7 +28,7 @@ const useMovie = (id: string) => {
       });
 
     return () => controller.abort();
-  }, []);
+  }, [id]);
 
   return {
     movie,

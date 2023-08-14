@@ -34,9 +34,6 @@ const Movie = () => {
       paddingY={"100px"}
     >
       <HStack
-        style={{
-          backdropFilter: "blur(10px)",
-        }}
         justifyContent={"center"}
         gap={{
           sm: "10",
