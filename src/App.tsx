@@ -58,6 +58,7 @@ function App() {
             onLogoClick={() => {
               setMovieQuery(resetQuery);
             }}
+            movieQuery={movieQuery}
           />
         </GridItem>
         <GridItem

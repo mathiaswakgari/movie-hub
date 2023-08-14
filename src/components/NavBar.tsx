@@ -2,12 +2,12 @@ import { Box, HStack, Image, Text } from "@chakra-ui/react";
 import logo from "../assets/logo.png";
 import SearchBar from "./SearchBar";
 import ColorModeButton from "./ColorModeButton";
-import { IoIosArrowDropdown } from "react-icons/io";
 import { useState } from "react";
-import { BsArrowUpCircle } from "react-icons/bs";
+import { BsArrowDownCircle, BsArrowUpCircle } from "react-icons/bs";
 import SideBar from "./SideBar";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
+import { MovieQuery } from "../App";
 
 interface Props {
   onSearch: (searchTerm: string) => void;
@@ -15,6 +15,7 @@ interface Props {
   onOrderChange: (order: string) => void;
   onSelectGenre: (genre: string) => void;
   onLogoClick: () => void;
+  movieQuery: MovieQuery;
 }
 
 const NavBar = ({
@@ -23,6 +24,7 @@ const NavBar = ({
   onRatingChange,
   onSelectGenre,
   onLogoClick,
+  movieQuery,
 }: Props) => {
   const [isDropDownClicked, setIsDropDownClicked] = useState(false);
   return (
@@ -34,6 +36,8 @@ const NavBar = ({
         paddingBottom={0}
         className="smooth"
         bg={"chakra-body-bg"}
+        borderBottom={"1px solid"}
+        borderColor={"gray.100"}
       >
         <HStack justifyContent={"space-between"} padding={"2px 10px"}>
           <Link to={"/"} onClick={onLogoClick}>
@@ -63,11 +67,12 @@ const NavBar = ({
         </HStack>
         <Box display={"flex"} flexDirection={"column"} alignItems={"center"}>
           {!isDropDownClicked && (
-            <IoIosArrowDropdown
+            <BsArrowDownCircle
               style={{
                 fontSize: "30px",
                 marginBottom: "4px",
                 cursor: "pointer",
+                marginTop: "10px",
               }}
               className="btn"
               onClick={() => {
@@ -86,6 +91,7 @@ const NavBar = ({
                 onOrderChange={onOrderChange}
                 onRatingChange={onRatingChange}
                 onSelectGenre={onSelectGenre}
+                movieQuery={movieQuery}
               />
               <BsArrowUpCircle
                 style={{

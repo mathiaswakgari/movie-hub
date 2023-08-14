@@ -9,14 +9,18 @@ export interface Rating {
 
 interface Props {
   onRatingChange: (rating: number) => void;
+  selectedRating: number;
 }
 
-const RatingSelector = ({ onRatingChange }: Props) => {
+const RatingSelector = ({ onRatingChange, selectedRating }: Props) => {
+  const selectedObj = ratings.find((rating) => {
+    return rating.value === selectedRating;
+  });
   return (
     <HStack gap={"5"}>
       <Text>Rating:</Text>
       <Select
-        placeholder="All"
+        placeholder={selectedRating ? selectedObj?.key : "All"}
         width={"150px"}
         onChange={(e) => onRatingChange(parseInt(e.currentTarget.value))}
       >

@@ -3,14 +3,15 @@ import { HStack, Select, Text } from "@chakra-ui/react";
 
 interface Props {
   onOrderChange: (order: string) => void;
+  selectedOrder: string;
 }
 
-const OrderSelector = ({ onOrderChange }: Props) => {
+const OrderSelector = ({ onOrderChange, selectedOrder }: Props) => {
   return (
     <HStack gap={"5"}>
       <Text>Sort-By:</Text>
       <Select
-        placeholder="All"
+        placeholder={selectedOrder ? selectedOrder : "All"}
         width={"150px"}
         onChange={(e) => onOrderChange(e.currentTarget.value)}
       >
