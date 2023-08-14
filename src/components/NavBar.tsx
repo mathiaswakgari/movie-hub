@@ -14,6 +14,7 @@ interface Props {
   onRatingChange: (rating: number) => void;
   onOrderChange: (order: string) => void;
   onSelectGenre: (genre: string) => void;
+  onLogoClick: () => void;
 }
 
 const NavBar = ({
@@ -21,12 +22,13 @@ const NavBar = ({
   onOrderChange,
   onRatingChange,
   onSelectGenre,
+  onLogoClick,
 }: Props) => {
   const [isDropDownClicked, setIsDropDownClicked] = useState(false);
   return (
     <Box>
       <HStack justifyContent={"space-between"} padding={"2px 10px"}>
-        <Link to={"/"}>
+        <Link to={"/"} onClick={onLogoClick}>
           <Box display={"flex"} flexDirection={"row"} alignItems={"center"}>
             <Image
               src={logo}

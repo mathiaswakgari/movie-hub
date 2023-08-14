@@ -16,6 +16,12 @@ export interface MovieQuery {
 
 function App() {
   const [movieQuery, setMovieQuery] = useState<MovieQuery>({} as MovieQuery);
+  const resetQuery = {
+    searchTerm: "",
+    selectedGenre: "",
+    selectedRating: 0,
+    selectedOrder: "",
+  };
 
   return (
     <BrowserRouter>
@@ -56,6 +62,9 @@ function App() {
             }}
             onSelectGenre={(selectedGenre) => {
               setMovieQuery({ ...movieQuery, selectedGenre });
+            }}
+            onLogoClick={() => {
+              setMovieQuery(resetQuery);
             }}
           />
         </GridItem>

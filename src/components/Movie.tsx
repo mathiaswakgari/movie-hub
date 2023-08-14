@@ -39,9 +39,19 @@ const Movie = () => {
     );
 
   return (
-    <Box height={"100%"} width={"100%"} paddingX={"00px"} paddingY={"50px"}>
-      <Box bgImage={movie?.background_image} backgroundSize={"cover"}>
-        <Box bgColor={"rgba(0,0,0,0.5)"} paddingTop={"100px"}>
+    <Box height={"100%"} width={"100%"} paddingX={"00px"} paddingTop={"50px"}>
+      <Box
+        bgImage={movie?.background_image}
+        backgroundSize={"cover"}
+        height={{
+          lg: "100vh",
+        }}
+        minHeight={{
+          sm: "100vh",
+          md: "100vh",
+        }}
+      >
+        <Box bgColor={"rgba(0,0,0,0.5)"} paddingTop={"100px"} height={"100%"}>
           <HStack
             justifyContent={"center"}
             gap={{
@@ -67,7 +77,7 @@ const Movie = () => {
                   fontWeight={"bold"}
                   maxW={{
                     sm: "300px",
-                    md: "450px",
+                    md: "300px",
                     xl: "600px",
                   }}
                 >
@@ -117,7 +127,7 @@ const Movie = () => {
               </SimpleGrid>
             </Box>
           </HStack>
-          <Box paddingY={10}>
+          <Box paddingY={"100px"}>
             <Text textAlign={"center"}>Previews</Text>
             <HStack overflowX={"scroll"} justifyContent={"center"}>
               <Box>
@@ -132,47 +142,49 @@ const Movie = () => {
               <Image src={movie?.medium_screenshot_image2} />
             </HStack>
           </Box>
-          <Box>
-            <Box
-              bg={"chakra-body-bg"}
-              color={"chakra-body-text"}
-              display={"flex"}
-              justifyContent={"center"}
+        </Box>
+      </Box>
+      <Box>
+        <Box>
+          <Box
+            bg={"chakra-body-bg"}
+            color={"chakra-body-text"}
+            display={"flex"}
+            justifyContent={"center"}
+          >
+            <HStack
+              justifyContent={"space-evenly"}
+              paddingX={"10px"}
+              paddingTop={"10px"}
+              flexDirection={{
+                sm: "column",
+                md: "row",
+              }}
             >
-              <HStack
-                justifyContent={"space-evenly"}
-                paddingX={"10px"}
-                paddingTop={"10px"}
-                flexDirection={{
-                  sm: "column",
-                  md: "row",
+              <Box
+                maxW={{
+                  sm: "80%",
+                  md: "50%",
+                  lg: "60%",
                 }}
+                alignSelf={"flex-start"}
               >
-                <Box
-                  maxW={{
-                    sm: "80%",
-                    md: "50%",
-                    lg: "60%",
-                  }}
-                  alignSelf={"flex-start"}
-                >
-                  <Heading>Description</Heading>
-                  <Text paddingY={5} fontWeight={"light"}>
-                    {movie?.description_full
-                      ? movie?.description_full
-                      : "No Description"}
-                  </Text>
+                <Heading>Description</Heading>
+                <Text paddingY={5} fontWeight={"light"}>
+                  {movie?.description_full
+                    ? movie?.description_full
+                    : "No Description"}
+                </Text>
+              </Box>
+              <Box alignSelf={"flex-start"}>
+                <Heading>Top Cast</Heading>
+                <Box paddingY={5}>
+                  {movie?.cast
+                    ? movie?.cast.map((c) => <CastCard cast={c} />)
+                    : "No cast"}
                 </Box>
-                <Box alignSelf={"flex-start"}>
-                  <Heading>Top Cast</Heading>
-                  <Box paddingY={5}>
-                    {movie?.cast
-                      ? movie?.cast.map((c) => <CastCard cast={c} />)
-                      : "No cast"}
-                  </Box>
-                </Box>
-              </HStack>
-            </Box>
+              </Box>
+            </HStack>
           </Box>
         </Box>
       </Box>
