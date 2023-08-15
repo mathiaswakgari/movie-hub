@@ -160,6 +160,7 @@ const Movie = () => {
                 sm: "column",
                 md: "row",
               }}
+              width={"100%"}
             >
               <Box
                 maxW={{
