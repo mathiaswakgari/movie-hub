@@ -65,6 +65,8 @@ const NavBar = ({
             <SearchBar onSearch={onSearch} />
             <AiOutlineSetting
               fontSize={"30px"}
+              cursor={"pointer"}
+              className="icon"
               onClick={() => {
                 setIsDropDownClicked(!isDropDownClicked);
               }}
