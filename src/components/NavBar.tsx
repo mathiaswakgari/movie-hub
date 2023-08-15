@@ -3,7 +3,7 @@ import logo from "../assets/logo.png";
 import SearchBar from "./SearchBar";
 import ColorModeButton from "./ColorModeButton";
 import { useState } from "react";
-import { BsArrowDownCircle, BsArrowUpCircle } from "react-icons/bs";
+import { AiOutlineSetting } from "react-icons/ai";
 import SideBar from "./SideBar";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
@@ -61,52 +61,32 @@ const NavBar = ({
               </Text>
             </Box>
           </Link>
-
-          <SearchBar onSearch={onSearch} />
-          <ColorModeButton />
-        </HStack>
-        <Box display={"flex"} flexDirection={"column"} alignItems={"center"}>
-          {!isDropDownClicked && (
-            <BsArrowDownCircle
-              style={{
-                fontSize: "30px",
-                marginBottom: "4px",
-                cursor: "pointer",
-                marginTop: "10px",
-              }}
-              className="btn"
+          <HStack gap={"20px"}>
+            <SearchBar onSearch={onSearch} />
+            <AiOutlineSetting
+              fontSize={"30px"}
               onClick={() => {
                 setIsDropDownClicked(!isDropDownClicked);
               }}
             />
-          )}
-          {isDropDownClicked && (
-            <Box
-              display={"flex"}
-              width={"100%"}
-              flexDirection={"column"}
-              alignItems={"center"}
-            >
-              <SideBar
-                onOrderChange={onOrderChange}
-                onRatingChange={onRatingChange}
-                onSelectGenre={onSelectGenre}
-                movieQuery={movieQuery}
-              />
-              <BsArrowUpCircle
-                style={{
-                  fontSize: "30px",
-                  marginBottom: "14px",
-                  cursor: "pointer",
-                }}
-                className="btn"
-                onClick={() => {
-                  setIsDropDownClicked(!isDropDownClicked);
-                }}
-              />
-            </Box>
-          )}
-        </Box>
+          </HStack>
+          <ColorModeButton />
+        </HStack>
+        {isDropDownClicked && (
+          <Box
+            display={"flex"}
+            width={"100%"}
+            flexDirection={"column"}
+            alignItems={"center"}
+          >
+            <SideBar
+              onOrderChange={onOrderChange}
+              onRatingChange={onRatingChange}
+              onSelectGenre={onSelectGenre}
+              movieQuery={movieQuery}
+            />
+          </Box>
+        )}
       </Box>
     </>
   );
