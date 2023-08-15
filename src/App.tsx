@@ -12,6 +12,7 @@ export interface MovieQuery {
   selectedGenre: string;
   selectedRating: number;
   selectedOrder: string;
+  page: number;
 }
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
     selectedGenre: "",
     selectedRating: 0,
     selectedOrder: "",
+    page: 1,
   };
 
   return (
@@ -69,7 +71,17 @@ function App() {
           alignItems={"center"}
         >
           <Routes>
-            <Route path="/" element={<Movies movieQuery={movieQuery} />} />
+            <Route
+              path="/"
+              element={
+                <Movies
+                  movieQuery={movieQuery}
+                  onPageChange={(page: number) => {
+                    setMovieQuery({ ...movieQuery, page: page + 1 });
+                  }}
+                />
+              }
+            />
             <Route path="/movies/:id" element={<Movie />} />
           </Routes>
         </GridItem>

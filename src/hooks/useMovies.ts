@@ -52,6 +52,8 @@ const useMovies = (movieQuery: MovieQuery) => {
           genre: movieQuery.selectedGenre,
           minimum_rating: movieQuery.selectedRating,
           sort_by: movieQuery.selectedOrder,
+          limit: 8,
+          page: movieQuery.page,
         },
       })
       .then((res) => {
