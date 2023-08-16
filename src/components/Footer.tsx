@@ -10,10 +10,18 @@ const Footer = () => {
       justifyContent={"center"}
       flexDirection={"column"}
       display={"flex"}
+      paddingTop={"20px"}
     >
       <VStack justifyContent={"space-evenly"}>
         <Text>Mathias Wakgari</Text>
-        <Text>© 2023 Mathias Wakgari™. All Rights Reserved.</Text>
+        <Text
+          fontSize={{
+            base: "10px",
+            md: "25px",
+          }}
+        >
+          © 2023 Mathias Wakgari™. All Rights Reserved.
+        </Text>
       </VStack>
     </Box>
   );

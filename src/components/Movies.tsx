@@ -33,7 +33,7 @@ const Movies = ({ movieQuery, onPageChange }: Props) => {
     <VStack>
       <SimpleGrid
         columns={{
-          sm: 1,
+          base: 1,
           md: 2,
           lg: 2,
           xl: 4,

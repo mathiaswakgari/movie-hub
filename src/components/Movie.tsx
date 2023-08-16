@@ -50,11 +50,11 @@ const Movie = () => {
         backgroundSize={"cover"}
         minHeight={"100vh"}
       >
-        <Box bgColor={"rgba(0,0,0,0.5)"} paddingTop={"100px"} height={"100%"}>
+        <Box bgColor={"rgba(0,0,0,0.5)"} paddingTop={"100px"} minH={"100vh"}>
           <HStack
             justifyContent={"center"}
             gap={{
-              sm: "10",
+              base: "10",
               md: "20",
             }}
             flexDirection={{
@@ -67,9 +67,28 @@ const Movie = () => {
             <Box>
               <MovieCardNoHover url={movie?.large_cover_image!} />
             </Box>
-            <Box color={"white"} maxW={"600px"}>
-              <VStack alignItems={"flex-start"}>
-                <Heading fontSize={"3xl"}>{movie?.title}</Heading>
+            <Box
+              color={"white"}
+              maxW={{
+                base: "300px",
+                md: "600px",
+                lg: "600px",
+              }}
+            >
+              <VStack
+                alignItems={{
+                  base: "center",
+                  md: "flex-start",
+                }}
+              >
+                <Heading
+                  fontSize={{
+                    base: "1xl",
+                    md: "3xl",
+                  }}
+                >
+                  {movie?.title}
+                </Heading>
                 <Text fontSize={"xl"} fontWeight={"light"}>
                   {movie?.year}
                 </Text>
@@ -156,6 +175,7 @@ const Movie = () => {
             color={"chakra-body-text"}
             display={"flex"}
             justifyContent={"center"}
+            minH={"50vh"}
           >
             <HStack
               justifyContent={"space-evenly"}
@@ -176,7 +196,14 @@ const Movie = () => {
                 alignSelf={"flex-start"}
               >
                 <Heading>Description</Heading>
-                <Text paddingY={5} fontWeight={"light"}>
+                <Text
+                  fontSize={{
+                    base: "12px",
+                    sm: "19px",
+                  }}
+                  paddingY={5}
+                  fontWeight={"light"}
+                >
                   {movie?.description_full
                     ? movie?.description_full
                     : "No Description"}
