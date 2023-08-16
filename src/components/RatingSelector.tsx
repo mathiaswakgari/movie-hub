@@ -18,7 +18,7 @@ const RatingSelector = ({ onRatingChange, selectedRating }: Props) => {
   });
   return (
     <HStack gap={"5"}>
-      <Text>Rating:</Text>
+      <Text marginY={"5px"}>Rating:</Text>
       <Select
         placeholder={selectedRating ? selectedObj?.key : "All"}
         width={"150px"}

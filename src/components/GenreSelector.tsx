@@ -8,7 +8,7 @@ interface Props {
 const GenreSelector = ({ onGenreChange, selectedGenre }: Props) => {
   return (
     <HStack gap={"5"}>
-      <Text>Genre:</Text>
+      <Text marginY={"5px"}>Genre:</Text>
       <Select
         placeholder={selectedGenre ? selectedGenre : "All"}
         width={"150px"}

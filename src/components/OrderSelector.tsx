@@ -9,7 +9,7 @@ interface Props {
 const OrderSelector = ({ onOrderChange, selectedOrder }: Props) => {
   return (
     <HStack gap={"5"}>
-      <Text>Sort-By:</Text>
+      <Text marginY={"5px"}>Sort-By:</Text>
       <Select
         placeholder={selectedOrder ? selectedOrder : "All"}
         width={"150px"}

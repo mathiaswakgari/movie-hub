@@ -23,6 +23,7 @@ const SideBar = ({
       <HStack
         gap={10}
         paddingY={2}
+        justifyContent={"center"}
         flexDirection={{
           sm: "column",
           md: "row",

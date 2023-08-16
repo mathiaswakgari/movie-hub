@@ -25,7 +25,6 @@ const useMovie = (id: string) => {
       .then((res) => {
         setIsLoading(false);
         setMovie(res.data.data.movie);
-        console.log(res.data.data.movie);
       })
       .catch((e) => {
         setIsLoading(false);

@@ -45,8 +45,8 @@ const Movies = ({ movieQuery, onPageChange }: Props) => {
         {isLoading
           ? skeletonMovies.map((movie) => <MovieCardSkeleton key={movie} />)
           : movies.map((movie) => (
-              <Link to={`/movies/${movie.id}`}>
-                <MovieCard key={movie.id} movie={movie} />
+              <Link key={movie.id} to={`/movies/${movie.id}`}>
+                <MovieCard movie={movie} />
               </Link>
             ))}
       </SimpleGrid>

@@ -26,7 +26,9 @@ const MovieCard = ({ movie }: Props) => {
           >{`${movie.rating}/10`}</Text>
           <VStack>
             {movie.genres.map((genre) => (
-              <Text fontSize={"2xl"}>{genre}</Text>
+              <Text fontSize={"2xl"} key={genre}>
+                {genre}
+              </Text>
             ))}
           </VStack>
         </Box>

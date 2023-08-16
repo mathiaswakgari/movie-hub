@@ -120,7 +120,7 @@ const Movie = () => {
                 spacing={2}
               >
                 {suggestedMovies.map((movie) => (
-                  <Link to={`/movies/${movie.id}`}>
+                  <Link key={movie.id} to={`/movies/${movie.id}`}>
                     <SuggestedMovieCard key={movie.id} movie={movie} />
                   </Link>
                 ))}
@@ -181,7 +181,7 @@ const Movie = () => {
                 <Heading>Top Cast</Heading>
                 <Box paddingY={5}>
                   {movie?.cast
-                    ? movie?.cast.map((c) => <CastCard cast={c} />)
+                    ? movie?.cast.map((c) => <CastCard key={c.name} cast={c} />)
                     : "No cast"}
                 </Box>
               </Box>
