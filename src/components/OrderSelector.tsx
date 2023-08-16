@@ -16,8 +16,8 @@ const OrderSelector = ({ onOrderChange, selectedOrder }: Props) => {
         onChange={(e) => onOrderChange(e.currentTarget.value)}
       >
         {orders.map((order) => (
-          <option key={order} value={order}>
-            {order}
+          <option key={order.value} value={order.value}>
+            {order.key}
           </option>
         ))}
       </Select>

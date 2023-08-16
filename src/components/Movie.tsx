@@ -128,8 +128,18 @@ const Movie = () => {
             </Box>
           </HStack>
           <Box paddingY={"100px"}>
-            <Text textAlign={"center"}>Previews</Text>
-            <HStack overflowX={"scroll"} justifyContent={"center"}>
+            <Text textAlign={"center"} color={"white"}>
+              Previews
+            </Text>
+            <HStack
+              overflowX={"scroll"}
+              justifyContent={"center"}
+              flexDirection={{
+                sm: "column",
+                md: "column",
+                lg: "row",
+              }}
+            >
               <Box>
                 <ReactPlayer
                   url={`https://www.youtube.com/watch?v=${movie?.yt_trailer_code}`}
@@ -182,7 +192,7 @@ const Movie = () => {
                 <Box paddingY={5}>
                   {movie?.cast
                     ? movie?.cast.map((c) => <CastCard key={c.name} cast={c} />)
-                    : "No cast"}
+                    : "No cast information"}
                 </Box>
               </Box>
             </HStack>
