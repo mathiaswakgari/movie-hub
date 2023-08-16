@@ -27,7 +27,10 @@ const useMovie = (id: string) => {
         setMovie(res.data.data.movie);
         console.log(res.data.data.movie);
       })
-      .catch((e) => setError(e.message));
+      .catch((e) => {
+        setIsLoading(false);
+        setError(e.message);
+      });
 
     return () => controller.abort();
   }, [id]);

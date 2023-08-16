@@ -40,6 +40,7 @@ export interface Movie {
 const useMovies = (movieQuery: MovieQuery) => {
   const [movies, setMovies] = useState<Array<Movie>>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const controller = new AbortController();
@@ -59,6 +60,10 @@ const useMovies = (movieQuery: MovieQuery) => {
       .then((res) => {
         setMovies(res.data.data.movies);
         setIsLoading(false);
+      })
+      .catch((e) => {
+        setError(e.message);
+        setIsLoading(false);
       });
 
     return () => controller.abort();
@@ -67,6 +72,7 @@ const useMovies = (movieQuery: MovieQuery) => {
     movies,
     setMovies,
     isLoading,
+    error,
   };
 };
 export default useMovies;
