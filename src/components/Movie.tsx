@@ -39,17 +39,16 @@ const Movie = () => {
     );
 
   return (
-    <Box height={"100%"} width={"100%"} paddingX={"00px"} paddingTop={"50px"}>
+    <Box
+      minHeight={"100vh"}
+      width={"100%"}
+      paddingX={"00px"}
+      paddingTop={"50px"}
+    >
       <Box
         bgImage={movie?.background_image}
         backgroundSize={"cover"}
-        height={{
-          lg: "100vh",
-        }}
-        minHeight={{
-          sm: "100vh",
-          md: "100vh",
-        }}
+        minHeight={"100vh"}
       >
         <Box bgColor={"rgba(0,0,0,0.5)"} paddingTop={"100px"} height={"100%"}>
           <HStack
@@ -59,7 +58,9 @@ const Movie = () => {
               md: "20",
             }}
             flexDirection={{
+              base: "column",
               sm: "column",
+              md: "column",
               lg: "row",
             }}
           >
@@ -76,6 +77,7 @@ const Movie = () => {
                   fontSize={"xl"}
                   fontWeight={"bold"}
                   maxW={{
+                    base: "200px",
                     sm: "300px",
                     md: "300px",
                     xl: "600px",
@@ -110,15 +112,7 @@ const Movie = () => {
             </Box>
             <Box maxW={"300px"} maxH={"500px"} color={"white"}>
               <Text>Similar Movies</Text>
-              <SimpleGrid
-                columns={{
-                  sm: 2,
-                  md: 2,
-                  lg: 2,
-                  xl: 2,
-                }}
-                spacing={2}
-              >
+              <SimpleGrid columns={2} spacing={2}>
                 {suggestedMovies.map((movie) => (
                   <Link key={movie.id} to={`/movies/${movie.id}`}>
                     <SuggestedMovieCard key={movie.id} movie={movie} />
@@ -135,6 +129,7 @@ const Movie = () => {
               overflowX={"scroll"}
               justifyContent={"center"}
               flexDirection={{
+                base: "column",
                 sm: "column",
                 md: "column",
                 lg: "row",
@@ -167,7 +162,7 @@ const Movie = () => {
               paddingX={"10px"}
               paddingTop={"10px"}
               flexDirection={{
-                sm: "column",
+                base: "column",
                 md: "row",
               }}
               width={"100%"}
