@@ -11,6 +11,7 @@ interface FetchMovie {
 const useMovie = (id: string) => {
   const [movie, setMovie] = useState<Movie>();
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   useEffect(() => {
     const controller = new AbortController();
     setIsLoading(true);
@@ -25,7 +26,8 @@ const useMovie = (id: string) => {
         setIsLoading(false);
         setMovie(res.data.data.movie);
         console.log(res.data.data.movie);
-      });
+      })
+      .catch((e) => setError(e.message));
 
     return () => controller.abort();
   }, [id]);
@@ -33,6 +35,7 @@ const useMovie = (id: string) => {
   return {
     movie,
     isLoading,
+    error,
   };
 };
 export default useMovie;
