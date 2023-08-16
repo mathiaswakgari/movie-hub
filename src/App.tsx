@@ -2,7 +2,6 @@ import { Grid, GridItem } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import { useState } from "react";
 import Movies from "./components/Movies";
-import "./components/NavBar.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Movie from "./components/Movie";
 import Footer from "./components/Footer";
