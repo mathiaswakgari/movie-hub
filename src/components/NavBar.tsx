@@ -56,6 +56,7 @@ const NavBar = ({
                   md: "2xl",
                   lg: "3xl",
                 }}
+                paddingTop={"15px"}
               >
                 Cinéma
               </Text>
