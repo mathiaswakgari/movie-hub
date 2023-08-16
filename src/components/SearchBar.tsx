@@ -13,6 +13,7 @@ const SearchBar = ({ onSearch }: Props) => {
   return (
     <Box
       width={{
+        base: "100px",
         sm: "170px",
         md: "300px",
         lg: "450px",
@@ -33,6 +34,10 @@ const SearchBar = ({ onSearch }: Props) => {
             ref={ref}
             type="text"
             placeholder="Search here..."
+            fontSize={{
+              base: "10px",
+              sm: "20px",
+            }}
             onChange={() => onSearch(ref.current?.value!)}
           />
         </InputGroup>

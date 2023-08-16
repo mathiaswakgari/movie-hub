@@ -45,6 +45,7 @@ const NavBar = ({
               <Image
                 src={logo}
                 boxSize={{
+                  base: "10px",
                   sm: "20px",
                   md: "30px",
                 }}
@@ -52,6 +53,7 @@ const NavBar = ({
               />
               <Text
                 fontSize={{
+                  base: "2xs",
                   sm: "lg",
                   md: "2xl",
                   lg: "3xl",
@@ -65,7 +67,9 @@ const NavBar = ({
           <HStack gap={"20px"}>
             <SearchBar onSearch={onSearch} />
             <AiOutlineSetting
-              fontSize={"30px"}
+              fontSize={{
+                base: "15px",
+              }}
               cursor={"pointer"}
               className="icon"
               onClick={() => {
