@@ -2,7 +2,7 @@ import { Box, HStack } from "@chakra-ui/react";
 import GenreSelector from "./GenreSelector";
 import RatingSelector from "./RatingSelector";
 import OrderSelector from "./OrderSelector";
-import "./NavBar.css";
+import "./navBar.css";
 import { MovieQuery } from "../App";
 
 interface Props {

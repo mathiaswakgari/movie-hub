@@ -5,7 +5,7 @@ import ColorModeButton from "./ColorModeButton";
 import { useState } from "react";
 import { AiOutlineSetting } from "react-icons/ai";
 import SideBar from "./SideBar";
-import "./NavBar.css";
+import "./navBar.css";
 import { Link } from "react-router-dom";
 import { MovieQuery } from "../App";
 
