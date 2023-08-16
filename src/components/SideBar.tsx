@@ -21,10 +21,14 @@ const SideBar = ({
   return (
     <Box paddingBottom={1} className="smooth">
       <HStack
-        gap={10}
+        gap={{
+          base: "5px",
+          md: "20px",
+        }}
         paddingY={2}
         justifyContent={"center"}
         flexDirection={{
+          base: "column",
           sm: "column",
           md: "row",
         }}

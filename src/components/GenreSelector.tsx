@@ -8,10 +8,25 @@ interface Props {
 const GenreSelector = ({ onGenreChange, selectedGenre }: Props) => {
   return (
     <HStack gap={"5"}>
-      <Text marginY={"5px"}>Genre:</Text>
+      <Text
+        marginY={"5px"}
+        fontSize={{
+          base: "10px",
+          md: "15px",
+        }}
+      >
+        Genre:
+      </Text>
       <Select
         placeholder={selectedGenre ? selectedGenre : "All"}
-        width={"150px"}
+        width={{
+          base: "100px",
+          sm: "150px",
+        }}
+        fontSize={{
+          base: "10px",
+          md: "15px",
+        }}
         onChange={(e) => onGenreChange(e.currentTarget.value)}
       >
         {genres.map((genre) => (

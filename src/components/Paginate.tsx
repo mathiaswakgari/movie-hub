@@ -14,7 +14,7 @@ const Paginate = ({ onPageChange }: Props) => {
         nextLabel={">>"}
         breakLabel={"---"}
         activeClassName="active"
-        pageCount={10}
+        pageCount={7}
         previousClassName="page-item"
         previousLinkClassName="page-link"
         nextClassName="page-item"
