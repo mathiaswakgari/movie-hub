@@ -1,13 +1,4 @@
-import {
-  Box,
-  Card,
-  CardBody,
-  Heading,
-  Image,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
-import { Movie } from "../hooks/useMovies";
+import { Card, Image } from "@chakra-ui/react";
 
 interface Props {
   url: string;

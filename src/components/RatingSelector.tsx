@@ -1,4 +1,3 @@
-import React from "react";
 import { ratings } from "../data/Ratings";
 import { HStack, Select, Text } from "@chakra-ui/react";
 
