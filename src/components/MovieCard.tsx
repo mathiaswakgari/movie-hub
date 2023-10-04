@@ -25,11 +25,12 @@ const MovieCard = ({ movie }: Props) => {
             fontWeight={"extrabold"}
           >{`${movie.rating}/10`}</Text>
           <VStack>
-            {movie.genres.map((genre) => (
-              <Text fontSize={"2xl"} key={genre}>
-                {genre}
-              </Text>
-            ))}
+            {movie.genres! &&
+              movie.genres!.map((genre) => (
+                <Text fontSize={"2xl"} key={genre}>
+                  {genre}
+                </Text>
+              ))}
           </VStack>
         </Box>
       </Box>

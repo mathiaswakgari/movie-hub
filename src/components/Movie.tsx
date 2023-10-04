@@ -102,7 +102,7 @@ const Movie = () => {
                     xl: "600px",
                   }}
                 >
-                  {movie?.genres.map((genre) => (
+                  {movie?.genres!.map((genre) => (
                     <span key={genre}>{genre}/</span>
                   ))}
                 </Text>
@@ -212,7 +212,7 @@ const Movie = () => {
               <Box alignSelf={"flex-start"}>
                 <Heading>Top Cast</Heading>
                 <Box paddingY={5}>
-                  {movie?.cast
+                  {movie?.cast!
                     ? movie?.cast.map((c) => <CastCard key={c.name} cast={c} />)
                     : "No cast information"}
                 </Box>

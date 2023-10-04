@@ -23,7 +23,7 @@ export interface Movie {
   rating: number;
   runtime: number;
   summary: string;
-  genres: Array<string>;
+  genres?: Array<string>;
   background_image: string;
   small_cover_image: string;
   large_cover_image: string;
@@ -34,11 +34,16 @@ export interface Movie {
   medium_screenshot_image1: string;
   medium_screenshot_image2: string;
   description_full: string;
-  cast: Array<Cast>;
+  cast?: Array<Cast>;
 }
 
 const useMovies = (movieQuery: MovieQuery) => {
-  const [movies, setMovies] = useState<Array<Movie>>([]);
+  const [movies, setMovies] = useState<Movie[]>([
+    {
+      genres: [""],
+      cast: [{ character_name: "", name: "", url_small_image: "" }],
+    } as Movie,
+  ]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -64,7 +69,8 @@ const useMovies = (movieQuery: MovieQuery) => {
       .catch((e) => {
         setError(e.message);
         setIsLoading(false);
-      });
+      })
+      .finally(() => setIsLoading(false));
 
     return () => controller.abort();
   }, [movieQuery]);
