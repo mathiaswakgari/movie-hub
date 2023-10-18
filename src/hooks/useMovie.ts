@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { Movie } from "./useMovies";
-import apiClinet from "../services/api-clinet";
+import { Movie } from "../services/moviesService";
+import APIClient from "../services/api-clinet";
+import { useQuery } from "@tanstack/react-query";
 
 interface FetchMovie {
   data: {
@@ -9,35 +9,15 @@ interface FetchMovie {
 }
 
 const useMovie = (id: string) => {
-  const [movie, setMovie] = useState<Movie>();
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
-  useEffect(() => {
-    const controller = new AbortController();
-    setIsLoading(true);
-    apiClinet
-      .get<FetchMovie>(
-        `movie_details.json?movie_id=${id}&with_images=true&with_cast=true`,
-        {
-          signal: controller.signal,
-        }
-      )
-      .then((res) => {
-        setIsLoading(false);
-        setMovie(res.data.data.movie);
-      })
-      .catch((e) => {
-        setIsLoading(false);
-        setError(e.message);
-      });
+  const client = new APIClient<FetchMovie>(
+    `movie_details.json?movie_id=${id}&with_images=true&with_cast=true`
+  );
+  const fetchMovie = () => client.getAll();
 
-    return () => controller.abort();
-  }, [id]);
-
-  return {
-    movie,
-    isLoading,
-    error,
-  };
+  return useQuery({
+    queryKey: ["movie", id],
+    queryFn: fetchMovie,
+    staleTime: 10 * 1000, // 5 mins
+  });
 };
 export default useMovie;

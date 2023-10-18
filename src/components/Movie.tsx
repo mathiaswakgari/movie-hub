@@ -20,7 +20,7 @@ import CastCard from "./CastCard";
 
 const Movie = () => {
   const { id } = useParams();
-  const { movie, isLoading } = useMovie(id!);
+  const { data, isLoading } = useMovie(id!);
   const { suggestedMovies } = useSuggestedMovies(id!);
 
   if (isLoading)
@@ -46,7 +46,7 @@ const Movie = () => {
       paddingTop={"50px"}
     >
       <Box
-        bgImage={movie?.background_image}
+        bgImage={data?.data.movie?.background_image}
         backgroundSize={"cover"}
         minHeight={"100vh"}
       >
@@ -65,7 +65,7 @@ const Movie = () => {
             }}
           >
             <Box>
-              <MovieCardNoHover url={movie?.large_cover_image!} />
+              <MovieCardNoHover url={data?.data.movie.large_cover_image!} />
             </Box>
             <Box
               color={"white"}
@@ -87,10 +87,10 @@ const Movie = () => {
                     md: "3xl",
                   }}
                 >
-                  {movie?.title}
+                  {data?.data.movie?.title}
                 </Heading>
                 <Text fontSize={"xl"} fontWeight={"light"}>
-                  {movie?.year}
+                  {data?.data.movie?.year}
                 </Text>
                 <Text
                   fontSize={"xl"}
@@ -102,7 +102,7 @@ const Movie = () => {
                     xl: "600px",
                   }}
                 >
-                  {movie?.genres!.map((genre) => (
+                  {data?.data.movie?.genres!.map((genre) => (
                     <span key={genre}>{genre}/</span>
                   ))}
                 </Text>
@@ -121,7 +121,7 @@ const Movie = () => {
                           fontSize: "25px",
                         }}
                       >
-                        {movie?.rating}
+                        {data?.data.movie?.rating}
                       </span>
                       /10
                     </Text>
@@ -156,14 +156,14 @@ const Movie = () => {
             >
               <Box>
                 <ReactPlayer
-                  url={`https://www.youtube.com/watch?v=${movie?.yt_trailer_code}`}
+                  url={`https://www.youtube.com/watch?v=${data?.data.movie?.yt_trailer_code}`}
                   controls
                   height={"147px"}
                   width={"350px"}
                 />
               </Box>
-              <Image src={movie?.medium_screenshot_image1} />
-              <Image src={movie?.medium_screenshot_image2} />
+              <Image src={data?.data.movie?.medium_screenshot_image1} />
+              <Image src={data?.data.movie?.medium_screenshot_image2} />
             </HStack>
           </Box>
         </Box>
@@ -204,16 +204,18 @@ const Movie = () => {
                   paddingY={5}
                   fontWeight={"light"}
                 >
-                  {movie?.description_full
-                    ? movie?.description_full
+                  {data?.data.movie?.description_full
+                    ? data?.data.movie?.description_full
                     : "No Description"}
                 </Text>
               </Box>
               <Box alignSelf={"flex-start"}>
                 <Heading>Top Cast</Heading>
                 <Box paddingY={5}>
-                  {movie?.cast!
-                    ? movie?.cast.map((c) => <CastCard key={c.name} cast={c} />)
+                  {data?.data.movie?.cast!
+                    ? data?.data.movie?.cast.map((c) => (
+                        <CastCard key={c.name} cast={c} />
+                      ))
                     : "No cast information"}
                 </Box>
               </Box>
