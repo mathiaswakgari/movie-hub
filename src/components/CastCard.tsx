@@ -1,5 +1,5 @@
 import { Avatar, Box, HStack, Text } from "@chakra-ui/react";
-import { Cast } from "../hooks/useMovies";
+import { Cast } from "../services/moviesService";
 
 interface Props {
   cast: Cast;

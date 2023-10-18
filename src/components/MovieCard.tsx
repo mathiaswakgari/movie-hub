@@ -7,8 +7,9 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { Movie } from "../hooks/useMovies";
+
 import "./movieCard.css";
+import { Movie } from "../services/moviesService";
 
 interface Props {
   movie: Movie;
