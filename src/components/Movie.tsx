@@ -21,7 +21,7 @@ import CastCard from "./CastCard";
 const Movie = () => {
   const { id } = useParams();
   const { data, isLoading } = useMovie(id!);
-  const { suggestedMovies } = useSuggestedMovies(id!);
+  const { data: suggestedMovies } = useSuggestedMovies(id!);
 
   if (isLoading)
     return (
@@ -132,7 +132,7 @@ const Movie = () => {
             <Box maxW={"300px"} maxH={"500px"} color={"white"}>
               <Text>Similar Movies</Text>
               <SimpleGrid columns={2} spacing={2}>
-                {suggestedMovies.map((movie) => (
+                {suggestedMovies?.data.movies.map((movie) => (
                   <Link key={movie.id} to={`/movies/${movie.id}`}>
                     <SuggestedMovieCard key={movie.id} movie={movie} />
                   </Link>

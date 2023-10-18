@@ -1,24 +1,16 @@
-import { useEffect, useState } from "react";
-import { Movie } from "./useMovies";
-import { FetchMovies } from "./useMovies";
-import apiClinet from "../services/api-clinet";
+import { useQuery } from "@tanstack/react-query";
+import APIClient from "../services/api-clinet";
+import { FetchMovies } from "../services/moviesService";
 
 const useSuggestedMovies = (id: string) => {
-  const [suggestedMovies, setSuggestedMovies] = useState<Array<Movie>>([]);
-  const [error, setError] = useState("");
-  useEffect(() => {
-    const controller = new AbortController();
-    apiClinet
-      .get<FetchMovies>(`movie_suggestions.json?movie_id=${id}`)
-      .then((res) => setSuggestedMovies(res.data.data.movies))
-      .catch((e) => setError(e.message));
-
-    return () => controller.abort();
-  }, []);
-  return {
-    suggestedMovies,
-    error,
-  };
+  const client = new APIClient<FetchMovies>(
+    `movie_suggestions.json?movie_id=${id}`
+  );
+  return useQuery({
+    queryKey: ["suggestedMovies", id],
+    queryFn: client.getAll,
+    staleTime: 60 * 1000, // 5 mins
+  });
 };
 
 export default useSuggestedMovies;
