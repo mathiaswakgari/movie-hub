@@ -1,6 +1,7 @@
 import apiClinet from "../services/api-clinet";
 import { MovieQuery } from "../App";
 import { useQuery } from "@tanstack/react-query";
+import APIClient from "../services/api-clinet";
 
 export interface FetchMovies {
   data: {
@@ -38,21 +39,23 @@ export interface Movie {
 }
 
 const useMovies = (movieQuery: MovieQuery) => {
-  return useQuery({
+  const apiClient = new APIClient<FetchMovies>("list_movies.json");
+
+  return useQuery<FetchMovies, Error, FetchMovies, (string | MovieQuery)[]>({
     queryKey: ["movies", movieQuery],
-    queryFn: () =>
-      apiClinet
-        .get<FetchMovies>("list_movies.json", {
-          params: {
-            query_term: movieQuery.searchTerm,
-            genre: movieQuery.selectedGenre,
-            minimum_rating: movieQuery.selectedRating,
-            sort_by: movieQuery.selectedOrder,
-            limit: 8,
-            page: movieQuery.page,
-          },
-        })
-        .then((res) => res.data.data),
+    queryFn: () => {
+      return apiClient.getAll({
+        params: {
+          query_term: movieQuery.searchTerm,
+          genre: movieQuery.selectedGenre,
+          minimum_rating: movieQuery.selectedRating,
+          sort_by: movieQuery.selectedOrder,
+          limit: 8,
+          page: movieQuery.page,
+        },
+      });
+    },
+
     staleTime: 10 * 1000, // 5 mins
   });
 };
