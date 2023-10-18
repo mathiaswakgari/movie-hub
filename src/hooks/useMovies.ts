@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
 import apiClinet from "../services/api-clinet";
 import { MovieQuery } from "../App";
+import { useQuery } from "@tanstack/react-query";
 
 export interface FetchMovies {
   data: {
@@ -38,47 +38,22 @@ export interface Movie {
 }
 
 const useMovies = (movieQuery: MovieQuery) => {
-  const [movies, setMovies] = useState<Movie[]>([
-    {
-      genres: [""],
-      cast: [{ character_name: "", name: "", url_small_image: "" }],
-    } as Movie,
-  ]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    const controller = new AbortController();
-    setIsLoading(true);
-    apiClinet
-      .get<FetchMovies>("list_movies.json", {
-        signal: controller.signal,
-        params: {
-          query_term: movieQuery.searchTerm,
-          genre: movieQuery.selectedGenre,
-          minimum_rating: movieQuery.selectedRating,
-          sort_by: movieQuery.selectedOrder,
-          limit: 8,
-          page: movieQuery.page,
-        },
-      })
-      .then((res) => {
-        setMovies(res.data.data.movies);
-        setIsLoading(false);
-      })
-      .catch((e) => {
-        setError(e.message);
-        setIsLoading(false);
-      })
-      .finally(() => setIsLoading(false));
-
-    return () => controller.abort();
-  }, [movieQuery]);
-  return {
-    movies,
-    setMovies,
-    isLoading,
-    error,
-  };
+  return useQuery({
+    queryKey: ["movies", movieQuery],
+    queryFn: () =>
+      apiClinet
+        .get<FetchMovies>("list_movies.json", {
+          params: {
+            query_term: movieQuery.searchTerm,
+            genre: movieQuery.selectedGenre,
+            minimum_rating: movieQuery.selectedRating,
+            sort_by: movieQuery.selectedOrder,
+            limit: 8,
+            page: movieQuery.page,
+          },
+        })
+        .then((res) => res.data.data),
+    staleTime: 10 * 1000, // 5 mins
+  });
 };
 export default useMovies;
