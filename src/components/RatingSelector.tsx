@@ -1,17 +1,11 @@
 import { ratings } from "../data/Ratings";
 import { HStack, Select, Text } from "@chakra-ui/react";
+import useMovieQueryStore from "../store";
 
-export interface Rating {
-  key: string;
-  value: number;
-}
+const RatingSelector = () => {
+  const selectedRating = useMovieQueryStore((s) => s.movieQuery.selectedRating);
+  const setSelectedRating = useMovieQueryStore((s) => s.setSelectedRating);
 
-interface Props {
-  onRatingChange: (rating: number) => void;
-  selectedRating: number;
-}
-
-const RatingSelector = ({ onRatingChange, selectedRating }: Props) => {
   const selectedObj = ratings.find((rating) => {
     return rating.value === selectedRating;
   });
@@ -36,7 +30,7 @@ const RatingSelector = ({ onRatingChange, selectedRating }: Props) => {
           base: "10px",
           md: "15px",
         }}
-        onChange={(e) => onRatingChange(parseInt(e.currentTarget.value))}
+        onChange={(e) => setSelectedRating(parseInt(e.currentTarget.value))}
       >
         {ratings.map((rating) => (
           <option key={rating.value} value={rating.value}>

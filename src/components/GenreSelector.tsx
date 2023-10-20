@@ -1,11 +1,11 @@
 import { HStack, Select, Text } from "@chakra-ui/react";
 import { genres } from "../data/Genres";
-interface Props {
-  onGenreChange: (genre: string) => void;
-  selectedGenre: string;
-}
+import useMovieQueryStore from "../store";
 
-const GenreSelector = ({ onGenreChange, selectedGenre }: Props) => {
+const GenreSelector = () => {
+  const selectedGenre = useMovieQueryStore((s) => s.movieQuery.selectedGenre);
+  const setSelectedGenre = useMovieQueryStore((s) => s.setSelectedGenre);
+
   return (
     <HStack gap={"5"}>
       <Text
@@ -27,7 +27,7 @@ const GenreSelector = ({ onGenreChange, selectedGenre }: Props) => {
           base: "10px",
           md: "15px",
         }}
-        onChange={(e) => onGenreChange(e.currentTarget.value)}
+        onChange={(e) => setSelectedGenre(e.currentTarget.value)}
       >
         {genres.map((genre) => (
           <option key={genre} value={genre}>

@@ -1,9 +1,11 @@
-import { MovieQuery } from "../App";
 import { useQuery } from "@tanstack/react-query";
 import moviesService, { FetchMovies } from "../services/moviesService";
+import useMovieQueryStore from "../store";
 
-const useMovies = (movieQuery: MovieQuery) => {
-  return useQuery<FetchMovies, Error, FetchMovies, (string | MovieQuery)[]>({
+const useMovies = () => {
+  const movieQuery = useMovieQueryStore((s) => s.movieQuery);
+
+  return useQuery<FetchMovies, Error, FetchMovies>({
     queryKey: ["movies", movieQuery],
     queryFn: () => {
       return moviesService.getAll({

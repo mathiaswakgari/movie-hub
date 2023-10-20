@@ -2,14 +2,14 @@ import { Box, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
+import useMovieQueryStore from "../store";
 
-interface Props {
-  onSearch: (searchTerm: string) => void;
-}
-const SearchBar = ({ onSearch }: Props) => {
+const SearchBar = () => {
+  const setSearchTerm = useMovieQueryStore((s) => s.setSearchTerm);
   const ref = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const navigate = useNavigate();
+
   return (
     <Box
       width={{
@@ -23,7 +23,7 @@ const SearchBar = ({ onSearch }: Props) => {
         ref={formRef}
         onSubmit={(e) => {
           e.preventDefault();
-          if (ref.current) onSearch(ref.current.value);
+          if (ref.current) setSearchTerm(ref.current.value);
           navigate("/");
           formRef.current?.reset();
         }}
@@ -38,7 +38,7 @@ const SearchBar = ({ onSearch }: Props) => {
               base: "10px",
               sm: "20px",
             }}
-            onChange={() => onSearch(ref.current?.value!)}
+            onChange={() => setSearchTerm(ref.current?.value!)}
           />
         </InputGroup>
       </form>

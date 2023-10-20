@@ -1,12 +1,11 @@
 import { orders } from "../data/Orders";
 import { HStack, Select, Text } from "@chakra-ui/react";
+import useMovieQueryStore from "../store";
 
-interface Props {
-  onOrderChange: (order: string) => void;
-  selectedOrder: string;
-}
+const OrderSelector = () => {
+  const selectedOrder = useMovieQueryStore((s) => s.movieQuery.selectedOrder);
+  const setSelectedOrder = useMovieQueryStore((s) => s.setSelectedOrder);
 
-const OrderSelector = ({ onOrderChange, selectedOrder }: Props) => {
   return (
     <HStack gap={"5"}>
       <Text
@@ -28,7 +27,7 @@ const OrderSelector = ({ onOrderChange, selectedOrder }: Props) => {
           base: "10px",
           md: "15px",
         }}
-        onChange={(e) => onOrderChange(e.currentTarget.value)}
+        onChange={(e) => setSelectedOrder(e.currentTarget.value)}
       >
         {orders.map((order) => (
           <option key={order.value} value={order.value}>

@@ -3,21 +3,8 @@ import GenreSelector from "./GenreSelector";
 import RatingSelector from "./RatingSelector";
 import OrderSelector from "./OrderSelector";
 import "./navBar.css";
-import { MovieQuery } from "../App";
 
-interface Props {
-  onSelectGenre: (genre: string) => void;
-  onRatingChange: (rating: number) => void;
-  onOrderChange: (order: string) => void;
-  movieQuery: MovieQuery;
-}
-
-const SideBar = ({
-  onSelectGenre,
-  onRatingChange,
-  onOrderChange,
-  movieQuery,
-}: Props) => {
+const SideBar = () => {
   return (
     <Box paddingBottom={1} className="smooth">
       <HStack
@@ -33,18 +20,9 @@ const SideBar = ({
           md: "row",
         }}
       >
-        <GenreSelector
-          onGenreChange={onSelectGenre}
-          selectedGenre={movieQuery.selectedGenre}
-        />
-        <RatingSelector
-          onRatingChange={onRatingChange}
-          selectedRating={movieQuery.selectedRating}
-        />
-        <OrderSelector
-          onOrderChange={onOrderChange}
-          selectedOrder={movieQuery.selectedOrder}
-        />
+        <GenreSelector />
+        <RatingSelector />
+        <OrderSelector />
       </HStack>
     </Box>
   );

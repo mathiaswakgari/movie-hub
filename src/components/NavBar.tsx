@@ -7,25 +7,10 @@ import { AiOutlineSetting } from "react-icons/ai";
 import SideBar from "./SideBar";
 import "./navBar.css";
 import { Link } from "react-router-dom";
-import { MovieQuery } from "../App";
+import useMovieQueryStore from "../store";
 
-interface Props {
-  onSearch: (searchTerm: string) => void;
-  onRatingChange: (rating: number) => void;
-  onOrderChange: (order: string) => void;
-  onSelectGenre: (genre: string) => void;
-  onLogoClick: () => void;
-  movieQuery: MovieQuery;
-}
-
-const NavBar = ({
-  onSearch,
-  onOrderChange,
-  onRatingChange,
-  onSelectGenre,
-  onLogoClick,
-  movieQuery,
-}: Props) => {
+const NavBar = () => {
+  const reset = useMovieQueryStore((s) => s.reset);
   const [isDropDownClicked, setIsDropDownClicked] = useState(false);
   return (
     <>
@@ -40,7 +25,7 @@ const NavBar = ({
         borderColor={"gray.100"}
       >
         <HStack justifyContent={"space-between"} padding={"2px 10px"}>
-          <Link to={"/"} onClick={onLogoClick}>
+          <Link to={"/"} onClick={reset}>
             <Box display={"flex"} flexDirection={"row"} alignItems={"center"}>
               <Image
                 src={logo}
@@ -65,7 +50,7 @@ const NavBar = ({
             </Box>
           </Link>
           <HStack gap={"20px"}>
-            <SearchBar onSearch={onSearch} />
+            <SearchBar />
             <AiOutlineSetting
               fontSize={{
                 base: "15px",
@@ -86,12 +71,7 @@ const NavBar = ({
             flexDirection={"column"}
             alignItems={"center"}
           >
-            <SideBar
-              onOrderChange={onOrderChange}
-              onRatingChange={onRatingChange}
-              onSelectGenre={onSelectGenre}
-              movieQuery={movieQuery}
-            />
+            <SideBar />
           </Box>
         )}
       </Box>

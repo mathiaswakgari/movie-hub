@@ -1,12 +1,10 @@
 import { Box } from "@chakra-ui/react";
 import ReactPaginate from "react-paginate";
 import "./pagination.css";
+import useMovieQueryStore from "../store";
 
-interface Props {
-  onPageChange: (pageNumber: number) => void;
-}
-
-const Paginate = ({ onPageChange }: Props) => {
+const Paginate = () => {
+  const setPage = useMovieQueryStore((s) => s.setPage);
   return (
     <Box>
       <ReactPaginate
@@ -24,7 +22,7 @@ const Paginate = ({ onPageChange }: Props) => {
         containerClassName="pagination"
         marginPagesDisplayed={2}
         pageRangeDisplayed={10}
-        onPageChange={(data) => onPageChange(data.selected)}
+        onPageChange={(data) => setPage(data.selected)}
       />
     </Box>
   );
