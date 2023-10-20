@@ -6,10 +6,10 @@ import MovieCardSkeleton from "./MovieCardSkeleton";
 import Paginate from "./Paginate";
 
 const Movies = () => {
-  const { data, isLoading } = useMovies();
+  const { data, isLoading, isError } = useMovies();
   const skeletonMovies = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-  if (!data?.data.movies)
+  if (isError) {
     return (
       <Box
         w={"100vw"}
@@ -19,9 +19,10 @@ const Movies = () => {
         alignContent={"center"}
         alignItems={"center"}
       >
-        <Heading>Oops.... try again.</Heading>
+        <Heading>An unexpected error Occurred.</Heading>
       </Box>
     );
+  }
 
   return (
     <VStack>
