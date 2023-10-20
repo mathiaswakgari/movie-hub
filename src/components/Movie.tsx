@@ -16,6 +16,7 @@ import useSuggestedMovies from "../hooks/useSuggestedMovies";
 import SuggestedMovieCard from "./SuggestedMovieCard";
 import ReactPlayer from "react-player";
 import CastCard from "./CastCard";
+import Error from "./Error";
 // import { Movie } from "../hooks/useMovies";
 
 const Movie = () => {
@@ -37,6 +38,8 @@ const Movie = () => {
         </HStack>
       </Box>
     );
+
+  if (!data?.data) return <Error />;
 
   return (
     <Box

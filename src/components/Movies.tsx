@@ -1,27 +1,17 @@
-import { Box, Heading, SimpleGrid, VStack } from "@chakra-ui/react";
+import { SimpleGrid, VStack } from "@chakra-ui/react";
 import useMovies from "../hooks/useMovies";
 import MovieCard from "./MovieCard";
 import { Link } from "react-router-dom";
 import MovieCardSkeleton from "./MovieCardSkeleton";
 import Paginate from "./Paginate";
+import Error from "./Error";
 
 const Movies = () => {
   const { data, isLoading, isError } = useMovies();
   const skeletonMovies = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   if (isError) {
-    return (
-      <Box
-        w={"100vw"}
-        height={"100vh"}
-        display={"flex"}
-        justifyContent={"center"}
-        alignContent={"center"}
-        alignItems={"center"}
-      >
-        <Heading>An unexpected error Occurred.</Heading>
-      </Box>
-    );
+    return <Error />;
   }
 
   return (
