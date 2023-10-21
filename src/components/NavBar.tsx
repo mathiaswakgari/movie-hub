@@ -21,8 +21,6 @@ const NavBar = () => {
         paddingBottom={0}
         className="smooth"
         bg={"chakra-body-bg"}
-        borderBottom={"1px solid"}
-        borderColor={"gray.100"}
       >
         <HStack justifyContent={"space-between"} padding={"2px 10px"}>
           <Link to={"/"} onClick={reset}>
