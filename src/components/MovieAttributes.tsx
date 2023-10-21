@@ -1,5 +1,5 @@
 import { Box, VStack, Text, Heading, HStack } from "@chakra-ui/react";
-import { FaImdb } from "react-icons/fa";
+import { FaImdb, FaRegCalendarAlt } from "react-icons/fa";
 import { Movie } from "../services/moviesService";
 
 interface Props {
@@ -30,9 +30,19 @@ const MovieAttributes = ({ movie }: Props) => {
         >
           {movie?.title}
         </Heading>
-        <Text fontSize={"xl"} fontWeight={"light"}>
-          {movie?.year}
-        </Text>
+        <Box>
+          <HStack h={"full"} w={"full"}>
+            <FaRegCalendarAlt
+              style={{
+                fontSize: "30px",
+                color: "teal",
+              }}
+            />
+            <Text fontSize={"2xl"} paddingTop={4} fontWeight={"light"}>
+              {movie?.year}
+            </Text>
+          </HStack>
+        </Box>
         <Text
           fontSize={"xl"}
           fontWeight={"thin"}
