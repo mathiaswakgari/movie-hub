@@ -88,6 +88,8 @@ const Movie = () => {
           >
             <HStack
               justifyContent={"space-evenly"}
+              alignItems={"center"}
+              alignContent={"center"}
               paddingX={"10px"}
               paddingTop={"10px"}
               flexDirection={{

@@ -8,10 +8,11 @@ const MovieDescription = ({ description_full }: Props) => {
   return (
     <Box
       maxW={{
-        base: "85%",
-        sm: "80%",
+        base: "100%",
+
         md: "50%",
-        lg: "60%",
+        lg: "400px",
+        xl: "800px",
       }}
       alignSelf={"flex-start"}
     >
