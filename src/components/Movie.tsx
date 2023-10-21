@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import useMovie from "../hooks/useMovie";
-import { Box, HStack, Text, VStack, Spinner } from "@chakra-ui/react";
+import { Box, HStack, Text, VStack } from "@chakra-ui/react";
 
 import MovieCardNoHover from "./MovieCardNoHover";
 

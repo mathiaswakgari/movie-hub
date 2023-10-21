@@ -1,5 +1,4 @@
 import { Card, Image } from "@chakra-ui/react";
-import Loader from "./Loader";
 import FallbackLoader from "./FallbackLoader";
 
 interface Props {
