@@ -1,18 +1,9 @@
 import { useParams } from "react-router-dom";
 import useMovie from "../hooks/useMovie";
-import {
-  Box,
-  HStack,
-  Heading,
-  Text,
-  VStack,
-  Image,
-  Spinner,
-} from "@chakra-ui/react";
-import { LiaImdb } from "react-icons/lia";
+import { Box, HStack, Text, VStack, Spinner } from "@chakra-ui/react";
+
 import MovieCardNoHover from "./MovieCardNoHover";
-import ReactPlayer from "react-player";
-import CastCard from "./CastCard";
+
 import Error from "./Error";
 import SimilarMovies from "./SimilarMovies";
 import MovieAttributes from "./MovieAttributes";
@@ -20,24 +11,16 @@ import MovieTrailer from "./MovieTrailer";
 import MovieScreenshots from "./MovieScreenshots";
 import MovieCast from "./MovieCast";
 import MovieDescription from "./MovieDescription";
-// import { Movie } from "../hooks/useMovies";
+import Loader from "./Loader";
 
 const Movie = () => {
   const { id } = useParams();
   const { data, isLoading } = useMovie(id!);
 
-  if (isLoading)
+  if (!isLoading)
     return (
       <Box w={"100%"} h={"100vh"}>
-        <HStack
-          justifyContent={"center"}
-          alignContent={"center"}
-          alignItems={"center"}
-          h={"100%"}
-        >
-          <Spinner />
-          <Text>Loading...</Text>
-        </HStack>
+        <Loader />
       </Box>
     );
 
