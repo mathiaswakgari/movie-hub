@@ -35,7 +35,7 @@ const MovieAttributes = ({ movie }: Props) => {
         </Text>
         <Text
           fontSize={"xl"}
-          fontWeight={"bold"}
+          fontWeight={"thin"}
           maxW={{
             base: "200px",
             sm: "300px",
@@ -44,7 +44,10 @@ const MovieAttributes = ({ movie }: Props) => {
           }}
         >
           {movie?.genres!.map((genre) => (
-            <span key={genre}>{genre}/</span>
+            <span key={genre}>
+              {genre}
+              {"    "}
+            </span>
           ))}
         </Text>
         <Box>

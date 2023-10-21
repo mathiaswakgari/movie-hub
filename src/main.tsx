@@ -33,7 +33,8 @@ const colors = {
 const theme = extendTheme({
   colors,
   fonts: {
-    body: "Poppins",
+    body: "Tilt Neon",
+    heading: "Poppins",
   },
 });
 
