@@ -46,7 +46,9 @@ const MovieAttributes = ({ movie }: Props) => {
           {movie?.genres!.map((genre) => (
             <span key={genre}>
               {genre}
-              {"    "}
+
+              {movie?.genres!.length - 1 !== movie?.genres!.indexOf(genre) &&
+                ", "}
             </span>
           ))}
         </Text>
