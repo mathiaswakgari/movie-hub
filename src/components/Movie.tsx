@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useMovie from "../hooks/useMovie";
 import {
   Box,
@@ -7,22 +7,20 @@ import {
   Text,
   VStack,
   Image,
-  SimpleGrid,
   Spinner,
 } from "@chakra-ui/react";
 import { LiaImdb } from "react-icons/lia";
 import MovieCardNoHover from "./MovieCardNoHover";
-import useSuggestedMovies from "../hooks/useSuggestedMovies";
-import SuggestedMovieCard from "./SuggestedMovieCard";
 import ReactPlayer from "react-player";
 import CastCard from "./CastCard";
 import Error from "./Error";
+import SimilarMovies from "./SimilarMovies";
+import MovieAttributes from "./MovieAttributes";
 // import { Movie } from "../hooks/useMovies";
 
 const Movie = () => {
   const { id } = useParams();
   const { data, isLoading } = useMovie(id!);
-  const { data: suggestedMovies } = useSuggestedMovies(id!);
 
   if (isLoading)
     return (
@@ -70,78 +68,8 @@ const Movie = () => {
             <Box>
               <MovieCardNoHover url={data?.data.movie.large_cover_image!} />
             </Box>
-            <Box
-              color={"white"}
-              maxW={{
-                base: "300px",
-                md: "600px",
-                lg: "600px",
-              }}
-            >
-              <VStack
-                alignItems={{
-                  base: "center",
-                  md: "flex-start",
-                }}
-              >
-                <Heading
-                  fontSize={{
-                    base: "1xl",
-                    md: "3xl",
-                  }}
-                >
-                  {data?.data.movie?.title}
-                </Heading>
-                <Text fontSize={"xl"} fontWeight={"light"}>
-                  {data?.data.movie?.year}
-                </Text>
-                <Text
-                  fontSize={"xl"}
-                  fontWeight={"bold"}
-                  maxW={{
-                    base: "200px",
-                    sm: "300px",
-                    md: "300px",
-                    xl: "600px",
-                  }}
-                >
-                  {data?.data.movie?.genres!.map((genre) => (
-                    <span key={genre}>{genre}/</span>
-                  ))}
-                </Text>
-                <Box>
-                  <HStack>
-                    <LiaImdb
-                      style={{
-                        fontSize: "55px",
-                        color: "gold",
-                      }}
-                    />
-                    <Text fontWeight={"light"}>
-                      <span
-                        style={{
-                          fontWeight: "bolder",
-                          fontSize: "25px",
-                        }}
-                      >
-                        {data?.data.movie?.rating}
-                      </span>
-                      /10
-                    </Text>
-                  </HStack>
-                </Box>
-              </VStack>
-            </Box>
-            <Box maxW={"300px"} maxH={"500px"} color={"white"}>
-              <Text>Similar Movies</Text>
-              <SimpleGrid columns={2} spacing={2}>
-                {suggestedMovies?.data.movies.map((movie) => (
-                  <Link key={movie.id} to={`/movies/${movie.id}`}>
-                    <SuggestedMovieCard key={movie.id} movie={movie} />
-                  </Link>
-                ))}
-              </SimpleGrid>
-            </Box>
+            <MovieAttributes movie={data?.data?.movie} />
+            <SimilarMovies id={id!} />
           </HStack>
           <Box paddingY={"100px"}>
             <Text textAlign={"center"} color={"white"}>
