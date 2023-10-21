@@ -18,6 +18,8 @@ import SimilarMovies from "./SimilarMovies";
 import MovieAttributes from "./MovieAttributes";
 import MovieTrailer from "./MovieTrailer";
 import MovieScreenshots from "./MovieScreenshots";
+import MovieCast from "./MovieCast";
+import MovieDescription from "./MovieDescription";
 // import { Movie } from "../hooks/useMovies";
 
 const Movie = () => {
@@ -111,38 +113,10 @@ const Movie = () => {
               }}
               width={"100%"}
             >
-              <Box
-                maxW={{
-                  sm: "80%",
-                  md: "50%",
-                  lg: "60%",
-                }}
-                alignSelf={"flex-start"}
-              >
-                <Heading>Description</Heading>
-                <Text
-                  fontSize={{
-                    base: "12px",
-                    sm: "19px",
-                  }}
-                  paddingY={5}
-                  fontWeight={"light"}
-                >
-                  {data?.data.movie?.description_full
-                    ? data?.data.movie?.description_full
-                    : "No Description"}
-                </Text>
-              </Box>
-              <Box alignSelf={"flex-start"}>
-                <Heading>Top Cast</Heading>
-                <Box paddingY={5}>
-                  {data?.data.movie?.cast!
-                    ? data?.data.movie?.cast.map((c) => (
-                        <CastCard key={c.name} cast={c} />
-                      ))
-                    : "No cast information"}
-                </Box>
-              </Box>
+              <MovieDescription
+                description_full={data?.data.movie?.description_full!}
+              />
+              <MovieCast cast={data?.data.movie?.cast!} />
             </HStack>
           </Box>
         </Box>
