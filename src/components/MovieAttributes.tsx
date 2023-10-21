@@ -1,5 +1,6 @@
 import { Box, VStack, Text, Heading, HStack } from "@chakra-ui/react";
 import { FaImdb, FaRegCalendarAlt } from "react-icons/fa";
+import { PiPopcornBold } from "react-icons/pi";
 import { Movie } from "../services/moviesService";
 
 interface Props {
@@ -43,25 +44,37 @@ const MovieAttributes = ({ movie }: Props) => {
             </Text>
           </HStack>
         </Box>
-        <Text
-          fontSize={"xl"}
-          fontWeight={"thin"}
-          maxW={{
-            base: "200px",
-            sm: "300px",
-            md: "300px",
-            xl: "600px",
-          }}
-        >
-          {movie?.genres!.map((genre) => (
-            <span key={genre}>
-              {genre}
+        <Box>
+          <HStack h={"full"} w={"full"}>
+            <PiPopcornBold
+              style={{
+                fontSize: "30px",
+                color: "pink",
+              }}
+            />
+            <Text
+              fontSize={"xl"}
+              paddingTop={4}
+              fontWeight={"thin"}
+              maxW={{
+                base: "100px",
+                sm: "100px",
+                md: "300px",
+                xl: "600px",
+              }}
+            >
+              {movie?.genres!.map((genre) => (
+                <span key={genre}>
+                  {genre}
 
-              {movie?.genres!.length - 1 !== movie?.genres!.indexOf(genre) &&
-                ", "}
-            </span>
-          ))}
-        </Text>
+                  {movie?.genres!.length - 1 !==
+                    movie?.genres!.indexOf(genre) && ", "}
+                </span>
+              ))}
+            </Text>
+          </HStack>
+        </Box>
+
         <Box>
           <HStack h={"full"} w={"full"}>
             <FaImdb
