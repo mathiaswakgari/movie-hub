@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <Box
       w={"100%"}
-      h={"100px"}
+      h={"50px"}
       borderTop={"1px solid grey"}
       bg={"chakra-body-bg"}
       justifyContent={"center"}
@@ -13,11 +13,11 @@ const Footer = () => {
       paddingTop={"20px"}
     >
       <VStack justifyContent={"space-evenly"}>
-        <Text>Mathias Wakgari</Text>
         <Text
+          fontFamily={"Poppins"}
           fontSize={{
             base: "10px",
-            md: "25px",
+            md: "16px",
           }}
         >
           © 2023 Mathias Wakgari™. All Rights Reserved.
