@@ -1,4 +1,6 @@
 import { Card, Image } from "@chakra-ui/react";
+import Loader from "./Loader";
+import FallbackLoader from "./FallbackLoader";
 
 interface Props {
   url: string;
@@ -13,9 +15,22 @@ const MovieCardNoHover = ({ url }: Props) => {
         lg: "250px",
         xl: "300px",
       }}
+      height={{
+        base: "288px",
+        md: "288px",
+        lg: "430px",
+        xl: "438px",
+      }}
       border={"4px white solid"}
+      background={"transparent"}
     >
-      <Image src={url} className="image" />
+      <Image
+        src={url}
+        height={"full"}
+        fallback={<FallbackLoader color="white" />}
+        className="image"
+        background={"transparent"}
+      />
     </Card>
   );
 };

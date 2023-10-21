@@ -17,7 +17,7 @@ const Movie = () => {
   const { id } = useParams();
   const { data, isLoading } = useMovie(id!);
 
-  if (!isLoading)
+  if (isLoading)
     return (
       <Box w={"100%"} h={"100vh"}>
         <Loader />

@@ -10,6 +10,7 @@ import {
 
 import "./movieCard.css";
 import { Movie } from "../services/moviesService";
+import FallbackLoader from "./FallbackLoader";
 
 interface Props {
   movie: Movie;
@@ -18,7 +19,16 @@ interface Props {
 const MovieCard = ({ movie }: Props) => {
   return (
     <Card maxW={"xs"} className="card">
-      <Image src={movie.large_cover_image} className="image" />
+      <Box height={"480px"} w={"full"} background={"transparent"}>
+        <Image
+          width={"full"}
+          height={"full"}
+          src={movie.large_cover_image}
+          className="image"
+          fallback={<FallbackLoader />}
+        />
+      </Box>
+
       <Box className="middle">
         <Box>
           <Text
