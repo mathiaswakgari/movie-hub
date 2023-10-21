@@ -1,5 +1,5 @@
 import { Box, VStack, Text, Heading, HStack } from "@chakra-ui/react";
-import { LiaImdb } from "react-icons/lia";
+import { FaImdb } from "react-icons/fa";
 import { Movie } from "../services/moviesService";
 
 interface Props {
@@ -51,23 +51,20 @@ const MovieAttributes = ({ movie }: Props) => {
           ))}
         </Text>
         <Box>
-          <HStack>
-            <LiaImdb
+          <HStack h={"full"} w={"full"}>
+            <FaImdb
               style={{
-                fontSize: "55px",
+                fontSize: "65px",
                 color: "gold",
               }}
             />
-            <Text fontWeight={"light"}>
-              <span
-                style={{
-                  fontWeight: "bolder",
-                  fontSize: "25px",
-                }}
-              >
-                {movie?.rating}
-              </span>
-              /10
+            <Text
+              paddingTop={4}
+              fontFamily={"Poppins"}
+              fontWeight={"bold"}
+              fontSize={"30px"}
+            >
+              {movie?.rating}
             </Text>
           </HStack>
         </Box>
