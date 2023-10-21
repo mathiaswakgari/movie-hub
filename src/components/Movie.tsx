@@ -78,11 +78,16 @@ const Movie = () => {
               Previews
             </Text>
             <VStack>
-              <MovieTrailer url={data?.data.movie?.yt_trailer_code} />
-              <MovieScreenshots
-                screenshot1={data?.data.movie?.large_screenshot_image1}
-                screenshot2={data?.data.movie?.large_screenshot_image2}
-              />
+              {data?.data.movie.yt_trailer_code && (
+                <MovieTrailer url={data?.data.movie?.yt_trailer_code} />
+              )}
+              {data?.data.movie.large_screenshot_image1 &&
+                data?.data.movie.large_screenshot_image2 && (
+                  <MovieScreenshots
+                    screenshot1={data?.data.movie?.large_screenshot_image1}
+                    screenshot2={data?.data.movie?.large_screenshot_image2}
+                  />
+                )}
             </VStack>
           </Box>
         </Box>
