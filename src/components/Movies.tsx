@@ -29,7 +29,7 @@ const Movies = () => {
       >
         {isLoading
           ? skeletonMovies.map((movie) => <MovieCardSkeleton key={movie} />)
-          : data?.data.movies.map((movie) => (
+          : data?.data?.movies?.map((movie) => (
               <Link key={movie.id} to={`/movies/${movie.id}`}>
                 <MovieCard movie={movie} />
               </Link>

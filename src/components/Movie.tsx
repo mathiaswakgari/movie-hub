@@ -16,6 +16,8 @@ import CastCard from "./CastCard";
 import Error from "./Error";
 import SimilarMovies from "./SimilarMovies";
 import MovieAttributes from "./MovieAttributes";
+import MovieTrailer from "./MovieTrailer";
+import MovieScreenshots from "./MovieScreenshots";
 // import { Movie } from "../hooks/useMovies";
 
 const Movie = () => {
@@ -75,27 +77,13 @@ const Movie = () => {
             <Text textAlign={"center"} color={"white"}>
               Previews
             </Text>
-            <HStack
-              overflowX={"scroll"}
-              justifyContent={"center"}
-              flexDirection={{
-                base: "column",
-                sm: "column",
-                md: "column",
-                lg: "row",
-              }}
-            >
-              <Box>
-                <ReactPlayer
-                  url={`https://www.youtube.com/watch?v=${data?.data.movie?.yt_trailer_code}`}
-                  controls
-                  height={"147px"}
-                  width={"350px"}
-                />
-              </Box>
-              <Image src={data?.data.movie?.medium_screenshot_image1} />
-              <Image src={data?.data.movie?.medium_screenshot_image2} />
-            </HStack>
+            <VStack>
+              <MovieTrailer url={data?.data.movie?.yt_trailer_code} />
+              <MovieScreenshots
+                screenshot1={data?.data.movie?.large_screenshot_image1}
+                screenshot2={data?.data.movie?.large_screenshot_image2}
+              />
+            </VStack>
           </Box>
         </Box>
       </Box>
