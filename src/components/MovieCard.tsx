@@ -2,6 +2,7 @@ import {
   Box,
   Card,
   CardBody,
+  HStack,
   Heading,
   Image,
   Text,
@@ -11,6 +12,7 @@ import {
 import "./movieCard.css";
 import { Movie } from "../services/moviesService";
 import FallbackLoader from "./FallbackLoader";
+import { FaImdb } from "react-icons/fa";
 
 interface Props {
   movie: Movie;
@@ -18,7 +20,7 @@ interface Props {
 
 const MovieCard = ({ movie }: Props) => {
   return (
-    <Card maxW={"xs"} className="card">
+    <Card maxW={"xs"} className="card" borderRadius={2}>
       <Box height={"480px"} w={"full"} background={"transparent"}>
         <Image
           width={"full"}
@@ -31,10 +33,19 @@ const MovieCard = ({ movie }: Props) => {
 
       <Box className="middle">
         <Box>
-          <Text
-            fontSize={"4xl"}
-            fontWeight={"extrabold"}
-          >{`${movie.rating}/10`}</Text>
+          <HStack>
+            <FaImdb
+              style={{
+                fontSize: "50px",
+              }}
+            />
+            <Text
+              fontSize={"4xl"}
+              paddingTop={3}
+              fontWeight={"extrabold"}
+            >{`${movie.rating}`}</Text>
+          </HStack>
+
           <VStack>
             {movie.genres! &&
               movie.genres!.map((genre) => (

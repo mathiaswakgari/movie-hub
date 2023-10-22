@@ -1,5 +1,5 @@
 .card:hover {
-  transform: scale(1.075);
+  transform: scale(1.045);
   transition-duration: 500ms;
 }
 .card:hover .image {
@@ -8,12 +8,6 @@
 
 .card:hover .middle {
   opacity: 1;
-}
-.text {
-  background-color: #04aa6d;
-  color: white;
-  font-size: 16px;
-  padding: 16px 32px;
 }
 .middle {
   transition: 0.5s ease;
