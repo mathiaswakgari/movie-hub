@@ -13,6 +13,7 @@ const Paginate = () => {
         w={"100px"}
         fontFamily={"Poppins"}
         colorScheme="blue"
+        borderRadius={20}
       >
         Previous
       </Button>
@@ -25,6 +26,7 @@ const Paginate = () => {
         w={"100px"}
         fontFamily={"Poppins"}
         colorScheme="blue"
+        borderRadius={20}
       >
         Next
       </Button>
