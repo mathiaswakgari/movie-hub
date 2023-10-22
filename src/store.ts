@@ -5,7 +5,7 @@ interface MovieQuery {
   selectedGenre?: string;
   selectedRating?: number;
   selectedOrder?: string;
-  page?: number;
+  page: number;
 }
 
 interface MovieQueryStore {
@@ -19,11 +19,12 @@ interface MovieQueryStore {
 }
 
 const useMovieQueryStore = create<MovieQueryStore>((set) => ({
-  movieQuery: {} as MovieQuery,
+  movieQuery: { page: 1 } as MovieQuery,
   setSearchTerm: (term: string) =>
     set(() => ({
       movieQuery: {
         searchTerm: term,
+        page: 1,
       },
     })),
   setSelectedGenre: (genre: string) =>

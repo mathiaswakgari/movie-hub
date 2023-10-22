@@ -1,33 +1,34 @@
-import { Box } from "@chakra-ui/react";
-import ReactPaginate from "react-paginate";
+import { Button, HStack } from "@chakra-ui/react";
 import "./pagination.css";
 import useMovieQueryStore from "../store";
 
 const Paginate = () => {
   const setPage = useMovieQueryStore((s) => s.setPage);
+  const page = useMovieQueryStore((s) => s.movieQuery.page);
   return (
-    <Box>
-      <ReactPaginate
-        previousLabel={"<<"}
-        nextLabel={">>"}
-        breakLabel={"---"}
-        activeClassName="active"
-        pageCount={5}
-        previousClassName="page-item"
-        previousLinkClassName="page-link"
-        nextClassName="page-item"
-        nextLinkClassName="page-link"
-        pageClassName="page-item"
-        pageLinkClassName="page-link"
-        containerClassName="pagination"
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={10}
-        onPageChange={(data) => {
-          setPage(data.selected + 1);
-          console.log(data.selected + 1);
+    <HStack gap={2} marginBottom={3}>
+      <Button
+        isDisabled={page <= 1}
+        onClick={() => setPage(page! - 1)}
+        w={"100px"}
+        fontFamily={"Poppins"}
+        colorScheme="blue"
+      >
+        Previous
+      </Button>
+      <Button
+        onClick={() => {
+          setPage(page + 1);
+          console.log(page);
         }}
-      />
-    </Box>
+        isDisabled={page >= 10}
+        w={"100px"}
+        fontFamily={"Poppins"}
+        colorScheme="blue"
+      >
+        Next
+      </Button>
+    </HStack>
   );
 };
 
