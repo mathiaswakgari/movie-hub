@@ -14,7 +14,7 @@ const useMovies = () => {
           genre: movieQuery.selectedGenre,
           minimum_rating: movieQuery.selectedRating,
           sort_by: movieQuery.selectedOrder,
-          limit: 4,
+          limit: 8,
           page: movieQuery.page,
         },
       });
