@@ -13,8 +13,8 @@ const MovieAttributes = ({ movie }: Props) => {
       color={"white"}
       maxW={{
         base: "300px",
-        md: "600px",
-        lg: "600px",
+        md: "400px",
+        lg: "350px",
       }}
     >
       <VStack

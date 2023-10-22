@@ -50,6 +50,7 @@ const Movie = () => {
               sm: "column",
               md: "column",
               lg: "row",
+              xl: "row",
             }}
           >
             <Box>
