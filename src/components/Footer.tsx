@@ -5,7 +5,6 @@ const Footer = () => {
     <Box
       w={"100%"}
       h={"50px"}
-      borderTop={"1px solid grey"}
       bg={"chakra-body-bg"}
       justifyContent={"center"}
       flexDirection={"column"}
