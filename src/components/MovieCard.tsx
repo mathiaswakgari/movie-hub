@@ -48,11 +48,14 @@ const MovieCard = ({ movie }: Props) => {
 
           <VStack>
             {movie.genres! &&
-              movie.genres!.map((genre) => (
-                <Text fontSize={"2xl"} key={genre}>
-                  {genre}
-                </Text>
-              ))}
+              movie.genres!.map(
+                (genre, index) =>
+                  index < 4 && (
+                    <Text fontSize={"2xl"} key={genre}>
+                      {genre}
+                    </Text>
+                  )
+              )}
           </VStack>
         </Box>
       </Box>
