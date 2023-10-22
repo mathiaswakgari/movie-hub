@@ -53,7 +53,10 @@ const MovieAttributes = ({ movie }: Props) => {
               }}
             />
             <Text
-              fontSize={"xl"}
+              fontSize={{
+                base: "md",
+                md: "xl",
+              }}
               paddingTop={4}
               fontWeight={"thin"}
               maxW={{
