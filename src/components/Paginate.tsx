@@ -12,7 +12,7 @@ const Paginate = () => {
         nextLabel={">>"}
         breakLabel={"---"}
         activeClassName="active"
-        pageCount={7}
+        pageCount={5}
         previousClassName="page-item"
         previousLinkClassName="page-link"
         nextClassName="page-item"
@@ -22,7 +22,10 @@ const Paginate = () => {
         containerClassName="pagination"
         marginPagesDisplayed={2}
         pageRangeDisplayed={10}
-        onPageChange={(data) => setPage(data.selected)}
+        onPageChange={(data) => {
+          setPage(data.selected + 1);
+          console.log(data.selected + 1);
+        }}
       />
     </Box>
   );
