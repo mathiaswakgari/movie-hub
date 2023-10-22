@@ -36,7 +36,7 @@ const SearchBar = () => {
             placeholder="Search here..."
             fontSize={{
               base: "10px",
-              sm: "20px",
+              md: "20px",
             }}
             onChange={() => setSearchTerm(ref.current?.value!)}
           />
