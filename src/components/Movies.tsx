@@ -20,8 +20,8 @@ const Movies = () => {
         columns={{
           base: 1,
           md: 2,
-          lg: 2,
-          xl: 4,
+          lg: 3,
+          xl: 5,
         }}
         spacing={"10"}
         paddingBottom={"50px"}

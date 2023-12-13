@@ -20,8 +20,8 @@ interface Props {
 
 const MovieCard = ({ movie }: Props) => {
   return (
-    <Card maxW={"xs"} className="card" borderRadius={2}>
-      <Box height={"480px"} w={"full"} background={"transparent"}>
+    <Card maxW={"250px"} className="card" borderRadius={2}>
+      <Box height={"full"} w={"full"} background={"transparent"}>
         <Image
           width={"full"}
           height={"full"}
@@ -30,7 +30,6 @@ const MovieCard = ({ movie }: Props) => {
           fallback={<FallbackLoader />}
         />
       </Box>
-
       <Box className="middle">
         <Box>
           <HStack>
