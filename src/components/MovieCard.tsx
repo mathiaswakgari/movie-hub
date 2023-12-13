@@ -20,9 +20,15 @@ interface Props {
 
 const MovieCard = ({ movie }: Props) => {
   return (
-    <Card maxW={"250px"} className="card" borderRadius={2}>
-      <Box height={"full"} w={"full"} background={"transparent"}>
+    <Card maxW={"250px"} className="card" borderRadius={0}>
+      <Box
+        borderRadius={5}
+        height={"full"}
+        w={"full"}
+        background={"transparent"}
+      >
         <Image
+          borderRadius={5}
           width={"full"}
           height={"full"}
           src={movie.large_cover_image}
