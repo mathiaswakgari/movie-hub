@@ -12,8 +12,8 @@ const Paginate = () => {
         onClick={() => setPage(page! - 1)}
         w={"100px"}
         fontFamily={"Poppins"}
-        colorScheme="blue"
-        borderRadius={20}
+        colorScheme="blackAlpha"
+        borderRadius={10}
       >
         Previous
       </Button>
@@ -25,8 +25,8 @@ const Paginate = () => {
         isDisabled={page >= 10}
         w={"100px"}
         fontFamily={"Poppins"}
-        colorScheme="blue"
-        borderRadius={20}
+        colorScheme="blackAlpha"
+        borderRadius={10}
       >
         Next
       </Button>
