@@ -19,7 +19,7 @@ const Footer = () => {
             md: "16px",
           }}
         >
-          © 2023 Mathias Wakgari™. All Rights Reserved.
+          © 2024 Mathias Wakgari™. All Rights Reserved.
         </Text>
       </VStack>
     </Box>
